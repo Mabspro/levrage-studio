@@ -3,7 +3,14 @@ import { Resend } from 'resend'
 import { tagSubmission, getEmailTemplate, shouldIncludeCalendly, type SubmissionData } from '@/lib/tagging'
 import { renderTemplate } from '@/lib/email-templates'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Initialize Resend lazily to avoid build-time errors when API key is not set
+function getResend() {
+  const apiKey = process.env.RESEND_API_KEY
+  if (!apiKey) {
+    return null
+  }
+  return new Resend(apiKey)
+}
 
 export async function POST(request: Request) {
   try {
@@ -59,7 +66,8 @@ export async function POST(request: Request) {
     const emailTemplate = renderTemplate(templateName, emailData)
 
     // Send email via Resend
-    if (process.env.RESEND_API_KEY) {
+    const resend = getResend()
+    if (resend && process.env.RESEND_API_KEY) {
       try {
         await resend.emails.send({
           from: fromEmail,
