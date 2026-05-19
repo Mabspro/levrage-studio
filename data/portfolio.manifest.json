@@ -333,7 +333,8 @@
       ],
       "studio_public": {
         "export": true,
-        "section": "flagships"
+        "section": "flagships",
+        "sort": 1
       }
     },
     {
@@ -593,8 +594,10 @@
         "ZAMBIAMACRO_SUPABASE_URL points at signals Supabase kmgdubsikchyvyddiypn"
       ],
       "studio_public": {
-        "export": false,
-        "reason": "Not listed on LevrAge Studios public portfolio"
+        "export": true,
+        "section": "flagships",
+        "sort": 5,
+        "note": "Community archive flagship — balances studio grid with LobStar"
       }
     },
     {
@@ -712,8 +715,10 @@
         "No coppercloud cross-references in code scan"
       ],
       "studio_public": {
-        "export": false,
-        "reason": "Not listed on LevrAge Studios public portfolio"
+        "export": true,
+        "section": "flagships",
+        "sort": 4,
+        "note": "Lobito corridor trust layer — pairs with LevrAge Solutions corridor narrative"
       }
     },
     {
@@ -740,7 +745,8 @@
       "package_name_mismatch": "package.json leverage-platform vs folder LevrAge-Solutions vs GitHub levrage-strategy",
       "studio_public": {
         "export": true,
-        "section": "flagships"
+        "section": "flagships",
+        "sort": 2
       }
     },
     {
@@ -801,7 +807,8 @@
       "status": "dormant",
       "studio_public": {
         "export": true,
-        "section": "flagships"
+        "section": "flagships",
+        "sort": 3
       }
     },
     {
@@ -983,7 +990,8 @@
       },
       "studio_public": {
         "export": true,
-        "section": "flagships"
+        "section": "flagships",
+        "sort": 6
       }
     },
     {

@@ -1,11 +1,20 @@
 {
-  "generated": "2026-05-19T16:51:55.360Z",
+  "generated": "2026-05-19T16:57:40.604Z",
   "manifest_path": "C:\\Users\\mabsp\\.openclaw\\workspace\\PORTFOLIO_MANIFEST.json",
   "manifest_source": "env",
   "schema": "id, name, url, blurb, section, status, sort",
   "filter_note": "studio_public.export + studio_public.section on each manifest project.",
-  "count": 18,
+  "count": 20,
   "items": [
+    {
+      "id": "coppercloud-ai",
+      "name": "CopperCloud.ai",
+      "url": "https://coppercloud.ai",
+      "blurb": "Marketing and positioning surface. Zambia's digital sovereignty standards authority framing.",
+      "section": "flagships",
+      "status": "live",
+      "sort": 1
+    },
     {
       "id": "rise-data-pipeline",
       "name": "RISE Data Pipeline",
@@ -16,20 +25,56 @@
       "sort": 1
     },
     {
+      "id": "levrage-solutions",
+      "name": "LevrAge Solutions",
+      "url": "https://www.levragesolutions.com",
+      "blurb": "Innovation and economic diplomacy platform.",
+      "section": "flagships",
+      "status": "live",
+      "sort": 2
+    },
+    {
+      "id": "network-manager",
+      "name": "Network Manager",
+      "url": "https://www.levrage.app",
+      "blurb": "Post-LinkedIn networking platform powered by RAG and degrees-of-separation intelligence.",
+      "section": "flagships",
+      "status": "live",
+      "sort": 3
+    },
+    {
+      "id": "lobito-platform",
+      "name": "Lobito Platform (LobStar)",
+      "url": "https://lobstar-platform.vercel.app",
+      "blurb": "Trust infrastructure for Lobito Corridor. Shares sovereign trust layer primitives with CopperCloud.",
+      "section": "flagships",
+      "status": "live",
+      "sort": 4
+    },
+    {
+      "id": "zambia-untold",
+      "name": "Zambia Untold",
+      "url": "https://zambia-untold.vercel.app",
+      "blurb": "The history you were never taught. Community archive and institutional brief surface.",
+      "section": "flagships",
+      "status": "live",
+      "sort": 5
+    },
+    {
+      "id": "healyri",
+      "name": "Healyri",
+      "url": null,
+      "blurb": "Health application. Mobile-first.",
+      "section": "flagships",
+      "status": "live",
+      "sort": 6
+    },
+    {
       "id": "coppercloud-orchestrator",
       "name": "CopperCloud Orchestrator",
       "url": "https://coppercloud-orchestrator.vercel.app",
       "blurb": "Proof-carrying workload coordination platform. Routing, attestation, receipt generation, node management, audit chain.",
       "section": "platform",
-      "status": "live",
-      "sort": 99
-    },
-    {
-      "id": "coppercloud-ai",
-      "name": "CopperCloud.ai",
-      "url": "https://coppercloud.ai",
-      "blurb": "Marketing and positioning surface. Zambia's digital sovereignty standards authority framing.",
-      "section": "flagships",
       "status": "live",
       "sort": 99
     },
@@ -48,24 +93,6 @@
       "url": "https://www.zancsac.com",
       "blurb": "Content site with payments for Association of Zambians in California.",
       "section": "community",
-      "status": "live",
-      "sort": 99
-    },
-    {
-      "id": "levrage-solutions",
-      "name": "LevrAge Solutions",
-      "url": "https://www.levragesolutions.com",
-      "blurb": "Innovation and economic diplomacy platform.",
-      "section": "flagships",
-      "status": "live",
-      "sort": 99
-    },
-    {
-      "id": "network-manager",
-      "name": "Network Manager",
-      "url": "https://www.levrage.app",
-      "blurb": "Post-LinkedIn networking platform powered by RAG and degrees-of-separation intelligence.",
-      "section": "flagships",
       "status": "live",
       "sort": 99
     },
@@ -103,15 +130,6 @@
       "blurb": "MVP web app to collect shipping interest and display container completion thermometer.",
       "section": "labs",
       "status": "experiment",
-      "sort": 99
-    },
-    {
-      "id": "healyri",
-      "name": "Healyri",
-      "url": null,
-      "blurb": "Health application. Mobile-first.",
-      "section": "flagships",
-      "status": "live",
       "sort": 99
     },
     {
@@ -209,7 +227,7 @@
         "blurb": "Marketing and positioning surface. Zambia's digital sovereignty standards authority framing.",
         "section": "flagships",
         "status": "live",
-        "sort": 99
+        "sort": 1
       },
       {
         "id": "levrage-solutions",
@@ -218,7 +236,7 @@
         "blurb": "Innovation and economic diplomacy platform.",
         "section": "flagships",
         "status": "live",
-        "sort": 99
+        "sort": 2
       },
       {
         "id": "network-manager",
@@ -227,7 +245,25 @@
         "blurb": "Post-LinkedIn networking platform powered by RAG and degrees-of-separation intelligence.",
         "section": "flagships",
         "status": "live",
-        "sort": 99
+        "sort": 3
+      },
+      {
+        "id": "lobito-platform",
+        "name": "Lobito Platform (LobStar)",
+        "url": "https://lobstar-platform.vercel.app",
+        "blurb": "Trust infrastructure for Lobito Corridor. Shares sovereign trust layer primitives with CopperCloud.",
+        "section": "flagships",
+        "status": "live",
+        "sort": 4
+      },
+      {
+        "id": "zambia-untold",
+        "name": "Zambia Untold",
+        "url": "https://zambia-untold.vercel.app",
+        "blurb": "The history you were never taught. Community archive and institutional brief surface.",
+        "section": "flagships",
+        "status": "live",
+        "sort": 5
       },
       {
         "id": "healyri",
@@ -236,7 +272,7 @@
         "blurb": "Health application. Mobile-first.",
         "section": "flagships",
         "status": "live",
-        "sort": 99
+        "sort": 6
       }
     ],
     "client_mvps": [

@@ -63,7 +63,27 @@
       "Event-driven flow to request help and notify vetted drivers.",
       "Location and destination logic oriented around local hospitals and services."
     ],
-    "linkLabel": "Lab-grade concept exploring emergency infrastructure patterns"
+    "linkLabel": "Flutter mobile flagship · studio-owned"
+  },
+  "lobito-platform": {
+    "displayName": "LobStar",
+    "headline": "Trust infrastructure for the Lobito Corridor",
+    "blurb": "Corridor-grade trust layer for operators and partners on Africa's Atlantic export highway — shares sovereign primitives with CopperCloud.",
+    "bullets": [
+      "Next.js + Firebase with Pinecone-backed intelligence for corridor workflows.",
+      "Designed to pair with LevrAge Solutions corridor narrative and macro signals."
+    ],
+    "linkLabel": "lobstar-platform.vercel.app"
+  },
+  "zambia-untold": {
+    "displayName": "Zambia Untold",
+    "headline": "The history you were never taught",
+    "blurb": "Immersive community archive and institutional brief surface — narrative experiences for Zambia's hidden stories, not a generic content site.",
+    "bullets": [
+      "Next.js + Three.js experiences with Supabase-backed archive structure.",
+      "CopperCloud integration path for attested institutional briefs."
+    ],
+    "linkLabel": "zambia-untold.vercel.app"
   },
   "the-wealth-shift": {
     "problem": "A wealth and finance brand needed a clear online presence that could educate and convert without a complex app.",

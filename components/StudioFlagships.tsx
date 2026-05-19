@@ -1,71 +1,48 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { getPortfolioBySection } from '@/lib/portfolio'
+import { getPortfolioBySection, type PortfolioItem } from '@/lib/portfolio'
+import PortfolioFlagshipCard from '@/components/PortfolioFlagshipCard'
+
+const FLAGSHIP_ACCENTS: Record<string, 'primary' | 'secondary'> = {
+  'coppercloud-ai': 'primary',
+  'levrage-solutions': 'primary',
+  'network-manager': 'primary',
+  'lobito-platform': 'secondary',
+  'zambia-untold': 'secondary',
+  healyri: 'primary',
+}
+
+function getAccent(item: PortfolioItem): 'primary' | 'secondary' {
+  return FLAGSHIP_ACCENTS[item.id] ?? 'primary'
+}
 
 export default function StudioFlagships() {
   const items = getPortfolioBySection('flagships')
+  if (items.length === 0) return null
 
   return (
-    <section id="studio-flagships" className="py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-heading font-bold text-foreground mb-4">
+    <section id="studio-flagships" className="relative overflow-hidden py-24 px-4 sm:px-6 lg:px-8">
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(0,217,255,0.07),transparent)]"
+        aria-hidden
+      />
+
+      <div className="relative mx-auto max-w-6xl">
+        <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-primary/80">
+          In-house products
+        </p>
+        <h2 className="text-3xl font-heading font-bold text-foreground sm:text-4xl text-balance">
           Studio flagships
         </h2>
-        <p className="text-xs text-muted mb-4">
-          Built using the same stack and patterns behind live SaaS products, healthcare MVPs, and
-          infrastructure-grade experiments.
-        </p>
-        <p className="text-lg text-muted mb-12 max-w-3xl">
-          These are products built and owned in-house at LevrAge Innovation Studios, showing how the
-          studio thinks about systems, data, and real-world use.
+        <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
+          Built and owned at LevrAge Innovation Studios — the same stack and patterns behind live
+          SaaS, corridor infrastructure, and institutional surfaces.
         </p>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {items.map((item) => (
-            <div
-              key={item.id}
-              className="border border-border rounded-lg p-6 space-y-4 hover:border-primary/50 transition-colors"
-            >
-              {item.logo && (
-                <div className="h-12 relative">
-                  <Image
-                    src={item.logo}
-                    alt={`${item.name} logo`}
-                    fill
-                    className="object-contain object-left"
-                  />
-                </div>
-              )}
-              <h3 className="text-lg font-heading font-semibold text-foreground">
-                {item.headline || item.name}
-              </h3>
-              <p className="text-muted text-sm">{item.blurb}</p>
-              {item.bullets && item.bullets.length > 0 && (
-                <div className="space-y-2 pt-2">
-                  <p className="text-xs font-medium text-foreground">What we shipped:</p>
-                  <ul className="text-xs text-muted space-y-1">
-                    {item.bullets.map((b) => (
-                      <li key={b}>• {b}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              {item.url && (
-                <div className="pt-2">
-                  <Link
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-primary hover:underline"
-                  >
-                    {item.linkLabel ? `${item.linkLabel} →` : 'View live →'}
-                  </Link>
-                </div>
-              )}
-            </div>
+            <PortfolioFlagshipCard key={item.id} item={item} accent={getAccent(item)} />
           ))}
         </div>
-      </div>
+        </div>
     </section>
   )
 }
