@@ -1,6 +1,7 @@
 {
-  "generated": "2026-05-19T16:38:54.494Z",
-  "manifest_path": "C:\\Users\\mabsp\\.openclaw\\workspace\\PORTFOLIO_MANIFEST.json",
+  "generated": "2026-05-19T16:44:16.963Z",
+  "manifest_path": "D:\\Projects\\levrage-studios\\data\\portfolio.manifest.json",
+  "manifest_source": "bundled",
   "schema": "id, name, url, blurb, section, status, sort",
   "filter_note": "studio_public.export + studio_public.section on each manifest project.",
   "count": 18,

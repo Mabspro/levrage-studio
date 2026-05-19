@@ -4,6 +4,15 @@
  *
  * Visibility: project.studio_public.export + project.studio_public.section
  *
+ * Manifest resolution (first match wins):
+ *   1. PORTFOLIO_MANIFEST env var
+ *   2. data/portfolio.manifest.json (committed — used on Vercel/CI)
+ *   3. ~/.openclaw/workspace/PORTFOLIO_MANIFEST.json (local agent workspace)
+ *
+ * After a successful export from (3), the snapshot at (2) is refreshed so the
+ * next commit keeps CI in sync. Run `npm run export-portfolio` before pushing
+ * when you change studio_public flags in the openclaw manifest.
+ *
  * Usage:
  *   node scripts/export-portfolio.js
  *   PORTFOLIO_MANIFEST=/path/to/PORTFOLIO_MANIFEST.json node scripts/export-portfolio.js
@@ -13,16 +22,41 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const MANIFEST_PATH =
-  process.env.PORTFOLIO_MANIFEST ||
-  path.join(process.env.USERPROFILE || '', '.openclaw', 'workspace', 'PORTFOLIO_MANIFEST.json');
+const BUNDLED_MANIFEST = path.join(ROOT, 'data', 'portfolio.manifest.json');
+const OPENCLAW_MANIFEST = path.join(
+  process.env.USERPROFILE || process.env.HOME || '',
+  '.openclaw',
+  'workspace',
+  'PORTFOLIO_MANIFEST.json'
+);
 const OUT_PATH = path.join(ROOT, 'data', 'portfolio.public.json');
 
-function getUrl(project) {
+function resolveManifestPath() {
+  if (process.env.PORTFOLIO_MANIFEST) {
+    return { path: process.env.PORTFOLIO_MANIFEST, source: 'env' };
+  }
+  if (fs.existsSync(BUNDLED_MANIFEST)) {
+    return { path: BUNDLED_MANIFEST, source: 'bundled' };
+  }
+  if (OPENCLAW_MANIFEST && fs.existsSync(OPENCLAW_MANIFEST)) {
+    return { path: OPENCLAW_MANIFEST, source: 'openclaw' };
+  }
+  return null;
+}
+
+function syncBundledSnapshot(fromPath) {
+  try {
+    fs.copyFileSync(fromPath, BUNDLED_MANIFEST);
+    console.log(`Synced manifest snapshot → ${BUNDLED_MANIFEST}`);
+  } catch (err) {
+    console.warn(`Could not sync manifest snapshot: ${err.message}`);
+  }
+}
+
+function getUrl(project, vercelByManifest) {
   const v = project.vercel;
   if (v?.url) return v.url.startsWith('http') ? v.url : `https://${v.url}`;
-  const map = readVercelMap();
-  const mapped = map[project.id];
+  const mapped = vercelByManifest[project.id];
   if (mapped?.production_urls?.[0]) {
     const u = mapped.production_urls[0];
     return u.startsWith('http') ? u : `https://${u}`;
@@ -30,19 +64,12 @@ function getUrl(project) {
   return null;
 }
 
-let _vercelByManifest = null;
-function readVercelMap() {
-  if (_vercelByManifest) return _vercelByManifest;
-  _vercelByManifest = {};
-  try {
-    const manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf8'));
-    for (const p of manifest.vercel_project_map?.projects || []) {
-      if (p.manifest_id) _vercelByManifest[p.manifest_id] = p;
-    }
-  } catch {
-    /* optional */
+function buildVercelMap(manifest) {
+  const map = {};
+  for (const p of manifest.vercel_project_map?.projects || []) {
+    if (p.manifest_id) map[p.manifest_id] = p;
   }
-  return _vercelByManifest;
+  return map;
 }
 
 function mapStatus(project) {
@@ -56,20 +83,38 @@ function mapStatus(project) {
   return null;
 }
 
-function resolveStatus(project) {
+function resolveStatus(project, vercelByManifest) {
   const s = mapStatus(project);
   if (s) return s;
-  if (project.vercel?.live || getUrl(project)) return 'live';
+  if (project.vercel?.live || getUrl(project, vercelByManifest)) return 'live';
   return 'selected';
 }
 
 function main() {
-  if (!fs.existsSync(MANIFEST_PATH)) {
-    console.error(`Manifest not found: ${MANIFEST_PATH}`);
+  const resolved = resolveManifestPath();
+
+  if (!resolved) {
+    if (fs.existsSync(OUT_PATH)) {
+      console.warn(
+        'No manifest found; using committed data/portfolio.public.json (skip re-export).'
+      );
+      console.warn(
+        'Add data/portfolio.manifest.json or set PORTFOLIO_MANIFEST for fresh exports.'
+      );
+      return;
+    }
+    console.error(
+      'Manifest not found. Expected one of:\n' +
+        `  PORTFOLIO_MANIFEST\n` +
+        `  ${BUNDLED_MANIFEST}\n` +
+        `  ${OPENCLAW_MANIFEST}`
+    );
     process.exit(1);
   }
 
-  const manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf8'));
+  const { path: manifestPath, source } = resolved;
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+  const vercelByManifest = buildVercelMap(manifest);
   const generated = new Date().toISOString();
   const items = [];
 
@@ -86,10 +131,10 @@ function main() {
     items.push({
       id: project.id,
       name: project.name,
-      url: getUrl(project),
+      url: getUrl(project, vercelByManifest),
       blurb: (project.role || project.note || '').split('\n')[0].slice(0, 280),
       section,
-      status: resolveStatus(project),
+      status: resolveStatus(project, vercelByManifest),
       sort: sp.sort ?? 99,
     });
   }
@@ -103,7 +148,8 @@ function main() {
 
   const output = {
     generated,
-    manifest_path: MANIFEST_PATH,
+    manifest_path: manifestPath,
+    manifest_source: source,
     schema: 'id, name, url, blurb, section, status, sort',
     filter_note: 'studio_public.export + studio_public.section on each manifest project.',
     count: items.length,
@@ -113,9 +159,14 @@ function main() {
 
   fs.mkdirSync(path.dirname(OUT_PATH), { recursive: true });
   fs.writeFileSync(OUT_PATH, JSON.stringify(output, null, 2) + '\n');
+  console.log(`Read manifest (${source}): ${manifestPath}`);
   console.log(`Wrote ${items.length} entries → ${OUT_PATH}`);
   for (const s of sections) {
     console.log(`  ${s}: ${bySection[s].length}`);
+  }
+
+  if (source === 'openclaw' || source === 'env') {
+    syncBundledSnapshot(manifestPath);
   }
 }
 

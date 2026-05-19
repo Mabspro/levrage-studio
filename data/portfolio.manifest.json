@@ -1,0 +1,2507 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "generated": "2026-05-18",
+    "maintainer": "Mabs",
+    "assistant": "Levi",
+    "purpose": "Machine-readable portfolio operating contract. Consumed by AI agents at session start to prevent context fragmentation, surface cross-repo dependencies, and route work to the right layer.",
+    "local_projects_root": "D:\\Projects",
+    "last_mapping_sprint": "2026-05-18T20:05:00Z",
+    "last_rescan": "2026-05-19T12:00:00Z",
+    "migration_complete": "2026-05-18T21:59:00Z",
+    "migration_status": "All projects on D:\\Projects. All manifest entries current. Vercel registry mapped. GitHub remotes wired at org level; some local folders remain uncloned (see local_not_cloned)."
+  },
+  "portfolio_tiers": {
+    "description": "Operational tiers for routing agent attention and sprint scope.",
+    "tiers": {
+      "1": {
+        "label": "Sovereign Infrastructure",
+        "focus": "CopperCloud platform, signals, evidence, research pipeline"
+      },
+      "2": {
+        "label": "Zambia Institutional",
+        "focus": "Zambia-facing institutional and community platforms"
+      },
+      "3": {
+        "label": "LevrAge Ecosystem",
+        "focus": "LevrAge LLC products and strategy surfaces"
+      },
+      "4": {
+        "label": "Consumer App",
+        "focus": "Personal and market consumer applications"
+      },
+      "5": {
+        "label": "Data Tool",
+        "focus": "Scrapers, research tools, utilities"
+      },
+      "6": {
+        "label": "Asset / Personal",
+        "focus": "Non-product assets, geodata, quick personal builds"
+      },
+      "7": {
+        "label": "Client Work",
+        "focus": "Built for external clients or client-adjacent deliverables. Live domains may exist without active dev obligation.",
+        "projects": [
+          "the-wealth-shift",
+          "pbs",
+          "refridgex",
+          "edc-consulting",
+          "alpha01"
+        ],
+        "active_maintained": [
+          "alpha01"
+        ],
+        "stalled_live": [
+          "the-wealth-shift",
+          "pbs",
+          "edc-consulting"
+        ],
+        "scaffolding": [
+          "refridgex"
+        ]
+      }
+    },
+    "live_maintained_non_tier7": {
+      "description": "Built for others, stays live — community or client, actively maintained. Not stalled client work.",
+      "projects": [
+        {
+          "id": "alpha01",
+          "for": "Medical consultants client",
+          "domain": "alpha01.vercel.app",
+          "tier": 7,
+          "status": "active"
+        },
+        {
+          "id": "zanc-site",
+          "for": "ZANC California community",
+          "domain": "www.zancsac.com",
+          "tier": 2,
+          "status": "active"
+        }
+      ]
+    },
+    "gravity_crm_pattern": {
+      "spec_project": "gravity-crm",
+      "production_instance": "idream-crm",
+      "note": "idream-crm is the first production instance of the gravity-crm pattern. iDream entities use it. D:\\Projects\\gravity-crm holds the general pattern spec only. API-connected to CopperCloud — never embedded in orchestrator."
+    },
+    "github_only_no_local": {
+      "housing-project": {
+        "repo": "https://github.com/Mabspro/housing_project",
+        "vercel": "housing-dashboard",
+        "domain": "housing-dashboard-six.vercel.app",
+        "note": "Stays on GitHub. No local clone required under D:\\Projects."
+      }
+    },
+    "studio_public_export": {
+      "site": "levrage-studios",
+      "public_json": "D:\\Projects\\levrage-studios\\data\\portfolio.public.json",
+      "display_json": "D:\\Projects\\levrage-studios\\data\\portfolio.display.json",
+      "script": "D:\\Projects\\levrage-studios\\scripts\\export-portfolio.js",
+      "filter": "Per-project studio_public.export and studio_public.section on manifest entries. Export script reads manifest only."
+    }
+  },
+  "platform_map": {
+    "description": "One platform with four expression layers. Not four separate projects.",
+    "architecture": "cyclic",
+    "layers": {
+      "signal": {
+        "projects": [
+          "signals.zambia.ai"
+        ],
+        "role": "Data ingestion, regime detection, sovereign intelligence signals"
+      },
+      "trust": {
+        "projects": [
+          "coppercloud-orchestrator",
+          "coppercloud-ssot",
+          "coppercloud.ai"
+        ],
+        "role": "Proof-carrying workload coordination. Receipt generation, routing, attestation, audit chain."
+      },
+      "institutional": {
+        "projects": [
+          "rise-data-pipeline",
+          "zambia-bridge",
+          "lobito-platform"
+        ],
+        "role": "Evidence infrastructure and investment intelligence for institutional audiences"
+      },
+      "intelligence": {
+        "projects": [
+          "Data-Sovereignty-Research-Pipeline"
+        ],
+        "role": "Research intake, claim validation, fitment scoring. Feeds back into signal layer."
+      }
+    },
+    "value_flow": [
+      "signals.zambia.ai → (ATTESTED receipts) → coppercloud-orchestrator",
+      "coppercloud-orchestrator → (receipt primitives + proof language) → rise-data-pipeline, zambia-bridge",
+      "Data-Sovereignty-Research-Pipeline → (validated claims, fitment) → coppercloud-ssot",
+      "Data-Sovereignty-Research-Pipeline → (intelligence feedback) → signals.zambia.ai"
+    ],
+    "ipc_current": "HTTP via CopperCloud /api/attestation and /api/workload (live)",
+    "ipc_intended": "Shared Upstash fabric or direct DB read for intelligence feedback loop (not yet built)",
+    "shared_primitives_source": "coppercloud-client (Python package) — receipt schema, Ed25519 canonicalization, CopperCloudConfig"
+  },
+  "agent_directives": {
+    "session_start": "Before working in any Tier 1 project, identify which other Tier 1 projects share a dependency. Load only relevant capsules. Do not treat projects as isolated repos.",
+    "no_task_complete_without": [
+      {
+        "trigger": "Modifying receipt schema, canonicalization, or coppercloud-client primitives",
+        "check_first": [
+          "coppercloud-ssot claims schema",
+          "signals.zambia.ai emit_receipt.py + builders.py",
+          "Data-Sovereignty-Research-Pipeline fitment types"
+        ],
+        "reason": "Ed25519 canonicalization bug (May 2026) broke 7-day ATTESTED streak. Schema drift is silent and catastrophic."
+      },
+      {
+        "trigger": "Modifying /api/workload routing logic or classification rules",
+        "check_first": [
+          "coppercloud-ssot sovereignty constraints",
+          "node-agent _requires_confidential_execution()"
+        ],
+        "reason": "Transport encryption ≠ TEE requirement. These are now separate gates. Do not conflate."
+      },
+      {
+        "trigger": "Modifying signals.zambia.ai data schemas or ingest pipeline",
+        "check_first": [
+          "coppercloud-client builders.py float-to-int normalization",
+          "Data-Sovereignty-Research-Pipeline ingest contracts"
+        ],
+        "reason": "Upstream schema changes cause silent receipt verification failures downstream."
+      },
+      {
+        "trigger": "Adding a new project or changing a project's Vercel/GitHub binding",
+        "check_first": [
+          "PORTFOLIO_MANIFEST.json — update this file before session ends"
+        ],
+        "reason": "Manifest goes stale silently. Stale manifest is worse than no manifest."
+      }
+    ],
+    "unremoted_projects_warning": "Migration sprint closed 2026-05-18: all projects have GitHub org remotes documented. Folders without active local .git should be cloned before major edits — see local_not_cloned.",
+    "tier7_client_work": "Tier 7 projects may be live on Vercel with no active dev obligation unless status is active. Do not treat stalled client sites as sovereign sprint scope.",
+    "idream_vs_gravity": "Work in idream-crm for live CRM behavior. Work in gravity-crm only for the reusable pattern spec. idream is API-connected to CopperCloud, not embedded."
+  },
+  "projects": [
+    {
+      "id": "coppercloud-orchestrator",
+      "name": "CopperCloud Orchestrator",
+      "tier": 1,
+      "tier_label": "Sovereign Infrastructure — Trust Layer",
+      "stack": [
+        "Next.js 14",
+        "TypeScript",
+        "Python",
+        "FastAPI (node-agent)",
+        "Upstash Redis",
+        "Vercel KV",
+        "@noble/ed25519"
+      ],
+      "local_path": "D:\\Projects\\coppercloud-orchestrator",
+      "github": {
+        "repo": "Mabspro/coppercloud-orchestrator",
+        "url": "https://github.com/Mabspro/coppercloud-orchestrator"
+      },
+      "vercel": {
+        "live": true,
+        "url": "https://coppercloud-orchestrator.vercel.app",
+        "project": "coppercloud-orchestrator"
+      },
+      "role": "Proof-carrying workload coordination platform. Routing, attestation, receipt generation, node management, audit chain.",
+      "superpower": "Ed25519-signed receipts with hash-chained audit trail. Capability-aware routing. Sovereign refusal proof (ZAMBIA_MANDATORY). Sprint 0 closed 2026-05-18.",
+      "current_sprint": "Sprint 0 CLOSED. Sprint 10 next: ZM-node deployment planning, hardware trust uplift (hp-gate1/TPM).",
+      "known_debt": "6 skipped node-agent tests. Nitro/confidential path classification debt. Startup task still needs elevated re-register after path migration.",
+      "consumes_from": [
+        "signals.zambia.ai (ATTESTED receipts via /api/attestation)",
+        "coppercloud-ssot (canon constraints)"
+      ],
+      "exposes_to": [
+        "rise-data-pipeline (receipt primitives)",
+        "zambia-bridge (proof language)",
+        "gravity-crm (API consumer, planned)"
+      ],
+      "shared_assets": [
+        "coppercloud-client (Python pkg)",
+        "node-agent agent.py"
+      ],
+      "context_dependencies": {
+        "if_modifying": "receipt schema, ed25519.ts, canonicalization, routing classifier, or node-agent execution paths",
+        "check_first": [
+          "coppercloud-ssot claims schema",
+          "signals.zambia.ai emit_receipt.py",
+          "node-agent _requires_confidential_execution()"
+        ],
+        "critical_history": "Canonicalization bug May 2026: global whitespace replace in ed25519.ts broke signature verification for string values with comma-space patterns. Transport encryption ≠ TEE requirement — now separate gates in agent.py."
+      },
+      "last_verified": "2026-05-18T20:05:00Z",
+      "package_name_mismatch": "dashboard package.json name is coppercloud-dashboard",
+      "has_env_secrets": true,
+      "status": "active",
+      "discovered_dependencies": [
+        "Consumed by signals.zambia.ai via /api/attestation and /api/workload (GitHub Actions secrets)",
+        "Consumed by rise-data-pipeline via common/coppercloud_client.py (POST /api/workload, GET receipt)",
+        "Upstash Redis (KV_REST_API_URL) — single orchestrator ledger"
+      ],
+      "studio_public": {
+        "export": true,
+        "section": "platform",
+        "note": "Sovereign infrastructure — narrative on studio site, not client work"
+      }
+    },
+    {
+      "id": "coppercloud-ssot",
+      "name": "CopperCloud SSOT",
+      "tier": 1,
+      "tier_label": "Sovereign Infrastructure — Canon Registry",
+      "stack": [
+        "Next.js 14.2",
+        "React 18",
+        "TypeScript",
+        "Firebase",
+        "Zod"
+      ],
+      "local_path": "D:\\Projects\\coppercloud-ssot",
+      "github": {
+        "repo": "Mabspro/CopperCloud-ssot",
+        "url": "https://github.com/Mabspro/CopperCloud-ssot"
+      },
+      "vercel": {
+        "live": true,
+        "url": "https://copper-cloud-ssot.vercel.app",
+        "project": "copper-cloud-ssot"
+      },
+      "role": "Git-first canonical registry for assumptions, constraints, gates, claims, and scenarios. Source of truth for what CopperCloud guarantees.",
+      "superpower": "Durable institutional memory for the platform. Prevents architectural drift across sprints.",
+      "consumes_from": [
+        "Data-Sovereignty-Research-Pipeline (validated claims, fitment scores)"
+      ],
+      "exposes_to": [
+        "coppercloud-orchestrator (sovereignty constraints)",
+        "all agents at session start"
+      ],
+      "context_dependencies": {
+        "if_modifying": "claims schema or sovereignty constraint definitions",
+        "check_first": [
+          "Data-Sovereignty-Research-Pipeline fitment types",
+          "coppercloud-orchestrator classifier.ts"
+        ]
+      },
+      "last_verified": "2026-05-18T20:05:00Z",
+      "has_env_secrets": true,
+      "last_commit_date": "2026-01-31",
+      "status": "dormant",
+      "discovered_dependencies": [
+        "No HTTP calls to coppercloud-orchestrator in codebase; canon references coppercloud-pilot-mufulira project IDs only",
+        "Intended consumer of Data-Sovereignty-Research-Pipeline validated claims — no live ingest hook found in scan"
+      ],
+      "studio_public": {
+        "export": false,
+        "reason": "Not listed on LevrAge Studios public portfolio"
+      }
+    },
+    {
+      "id": "coppercloud-ai",
+      "name": "CopperCloud.ai",
+      "tier": 1,
+      "tier_label": "Sovereign Infrastructure — Marketing Surface",
+      "dormant_since": "2026-04-04",
+      "stack": [
+        "Static HTML",
+        "Node http-server (no Next.js)"
+      ],
+      "local_path": "D:\\Projects\\coppercloud.ai",
+      "github": {
+        "repo": "Mabspro/CopperCloud.ai",
+        "url": "https://github.com/Mabspro/CopperCloud.ai"
+      },
+      "vercel": {
+        "live": true,
+        "url": "https://coppercloud.ai",
+        "project": "coppercloud-ai"
+      },
+      "role": "Marketing and positioning surface. Zambia's digital sovereignty standards authority framing.",
+      "activate_when": "Orchestrator story ready for institution-facing comms. Resume after Sprint 10 live-fire.",
+      "consumes_from": [],
+      "exposes_to": [],
+      "last_verified": "2026-05-18T20:05:00Z",
+      "last_commit_date": "2026-03-26",
+      "status": "dormant",
+      "discovered_dependencies": [
+        "Marketing surface only; no API integration to orchestrator in code"
+      ],
+      "studio_public": {
+        "export": true,
+        "section": "flagships"
+      }
+    },
+    {
+      "id": "signals-zambia-ai",
+      "name": "signals.zambia.ai",
+      "tier": 1,
+      "tier_label": "Sovereign Infrastructure — Signal Layer",
+      "stack": [
+        "Python",
+        "GitHub Actions",
+        "Supabase (kmgdubsikchyvyddiypn)",
+        "coppercloud-client (pip checkout in CI)"
+      ],
+      "local_path": "D:\\Projects\\signals.zambia.ai",
+      "github": {
+        "repo": "Mabspro/signals.zambia",
+        "url": "https://github.com/Mabspro/signals.zambia"
+      },
+      "vercel": {
+        "live": true,
+        "url": "https://signals-zambia.vercel.app",
+        "project": "signals-zambia"
+      },
+      "role": "Public-data sovereign intelligence: power-stress and macro-regime monitoring for Zambia. Emits CopperCloud ATTESTED receipts daily.",
+      "superpower": "Live ingest across BoZ FX, ZESCO, CHIRPS rainfall, LME copper. Daily ATTESTED receipts via CopperCloud. Staleness gate enforces inference honesty.",
+      "known_debt": "CHIRPS null features (UCSB publish lag). Retrain gated. PSI withheld emitter honesty bug (should emit 'skipped' not re-submit stale row).",
+      "consumes_from": [],
+      "exposes_to": [
+        "coppercloud-orchestrator (ATTESTED receipts)",
+        "Data-Sovereignty-Research-Pipeline (intelligence feedback, intended)"
+      ],
+      "context_dependencies": {
+        "if_modifying": "emit_receipt.py, builders.py, or any data schema",
+        "check_first": [
+          "coppercloud-client Python pkg canonicalization",
+          "float-to-int normalization in builders.py"
+        ],
+        "critical_history": "Secondary canonicalization bug: float age_days caused hash mismatch. Fixed May 2026. Always cast numeric fields explicitly."
+      },
+      "last_verified": "2026-05-18T20:05:00Z",
+      "has_env_secrets": true,
+      "status": "active",
+      "discovered_dependencies": [
+        "POST coppercloud-orchestrator /api/workload (daily_ingest) and /api/attestation (daily_infer) via COPPERCLOUD_ORCHESTRATOR_URL secret",
+        "Shares Supabase project kmgdubsikchyvyddiypn with zambia-untold ZAMBIAMACRO_SUPABASE_URL",
+        "No code path to Data-Sovereignty-Research-Pipeline (intended feedback loop not built)"
+      ],
+      "studio_public": {
+        "export": true,
+        "section": "platform",
+        "note": "Sovereign infrastructure — narrative on studio site, not client work"
+      }
+    },
+    {
+      "id": "rise-data-pipeline",
+      "name": "RISE Data Pipeline",
+      "tier": 1,
+      "tier_label": "Sovereign Infrastructure — Institutional Evidence Layer",
+      "stack": [
+        "FastAPI",
+        "Python 3.12+",
+        "Vite/React dashboard",
+        "Postgres (local dev; Neon planned)"
+      ],
+      "local_path": "D:\\Projects\\rise-data-pipeline",
+      "github": {
+        "repo": "Mabspro/rise-data-pipeline",
+        "url": "https://github.com/Mabspro/rise-data-pipeline"
+      },
+      "vercel": {
+        "live": true,
+        "url": "https://rise-data-dashboard.vercel.app",
+        "project": "rise-data-dashboard"
+      },
+      "role": "Zambia-first evidence infrastructure. Development decisions that can be traced, trusted, and improved. Phase 2 in progress.",
+      "superpower": "Postgres persistence, E2+ live. Artifact detail routes. Audit-grade data provenance.",
+      "known_debt": "Production Postgres path (Neon) not finalized. Cleanup branch QA pending. Dashboard live on Vercel; Neon + branch cleanup remain.",
+      "consumes_from": [
+        "coppercloud-orchestrator (HTTP /api/workload + receipt fetch — live in common/coppercloud_client.py)"
+      ],
+      "exposes_to": [
+        "institutional partners",
+        "ZCS-RISE strategic partnership"
+      ],
+      "context_dependencies": {
+        "if_modifying": "data schemas or ingest contracts",
+        "check_first": [
+          "Data-Sovereignty-Research-Pipeline ingest pipeline contracts"
+        ]
+      },
+      "last_verified": "2026-05-18T20:05:00Z",
+      "has_env_secrets": true,
+      "status": "active",
+      "discovered_dependencies": [
+        "common/coppercloud_client.py calls coppercloud-orchestrator.vercel.app /api/workload and /api/jobs/{id}/receipt",
+        "Duplicate coppercloud client logic (not using coppercloud-client Python package)",
+        "Partner page links to coppercloud.ai and orchestrator — no shared DB with orchestrator"
+      ],
+      "studio_public": {
+        "export": true,
+        "section": "institutional",
+        "sort": 1,
+        "note": "Fully built Zambia evidence engine (RISE). Live dashboard on Vercel. Institutional tier on studio site — not client MVP, not sovereign primitives."
+      }
+    },
+    {
+      "id": "isibalo-research-pipeline",
+      "name": "Data Sovereignty Research Pipeline (isibalo)",
+      "tier": 1,
+      "tier_label": "Sovereign Infrastructure — Intelligence Layer",
+      "local_folder": "Data-Sovereignty-Research-Pipeline",
+      "stack": [
+        "Python 3.10+",
+        "PostgreSQL (Neon ep-long-recipe-anw4yaql-pooler)",
+        "pdfplumber",
+        "BeautifulSoup"
+      ],
+      "local_path": "D:\\Projects\\Data-Sovereignty-Research-Pipeline",
+      "github": {
+        "org": "Mabspro",
+        "repo": "isibalo-research-pipeline",
+        "url": "https://github.com/Mabspro/isibalo-research-pipeline"
+      },
+      "note": "Local folder name differs from GitHub repo name.",
+      "vercel": {
+        "live": false
+      },
+      "role": "Research intake, PDF/web ingest, claim parsing, tier validation, fitment scoring. Phase 2 Sprint 1 verified.",
+      "superpower": "Full ingest→parse→tier→validate→fitment pipeline. ZambiaLII DPA 2021 (tier=1) + web (tier=3). Regulatory gap → architectural sovereignty fitment.",
+      "known_debt": "db_source_id required in claim fixtures for FK insert. No remote push yet (dev branch 2 ahead of main).",
+      "consumes_from": [
+        "web sources",
+        "PDF legal docs",
+        "coppercloud-ssot (claim schemas)"
+      ],
+      "exposes_to": [
+        "coppercloud-ssot (validated claims)",
+        "signals.zambia.ai (intelligence feedback, intended)"
+      ],
+      "context_dependencies": {
+        "if_modifying": "fitment types or claim schemas",
+        "check_first": [
+          "coppercloud-ssot canonical claim definitions"
+        ]
+      },
+      "last_verified": "2026-05-18T20:05:00Z",
+      "has_env_secrets": true,
+      "status": "active",
+      "discovered_dependencies": [
+        "Neon Postgres only; no coppercloud-orchestrator HTTP calls found",
+        "No signals.zambia.ai API integration (intended intelligence feedback not in code)",
+        "Schema coupling to coppercloud-ssot via claim YAML conventions, not imports"
+      ],
+      "studio_public": {
+        "export": false,
+        "reason": "Not listed on LevrAge Studios public portfolio"
+      }
+    },
+    {
+      "id": "gravity-crm",
+      "name": "Gravity CRM",
+      "tier": 1,
+      "tier_label": "Sovereign Infrastructure — CRM Pattern (Spec Only)",
+      "stack": [
+        "Spec only — planned Next.js 14 + Supabase + CopperCloud"
+      ],
+      "local_path": "D:\\Projects\\gravity-crm",
+      "github": {
+        "remote": false,
+        "note": "No local git; no GitHub repo found under Mabspro or LevrAge-LLC"
+      },
+      "note": "Pattern spec only — zero application code. Production instance is idream-crm (first gravity-crm pattern in production).",
+      "role": "Reusable spec for external CRMs that consume CopperCloud via API. Clean architecture: never embedded in orchestrator. iDream uses idream-crm, not this folder.",
+      "production_instance": "idream-crm",
+      "activate_when": "After live-fire cluster validated and capital conversations clarify proof requirements.",
+      "last_verified": "2026-05-18T20:05:00Z",
+      "status": "spec",
+      "discovered_dependencies": [
+        "START_HERE.md only — zero application code"
+      ],
+      "studio_public": {
+        "export": false,
+        "reason": "Not listed on LevrAge Studios public portfolio"
+      }
+    },
+    {
+      "id": "zambia-bridge",
+      "name": "Zambia Bridge",
+      "tier": 2,
+      "tier_label": "Zambia Institutional — Investment Intelligence",
+      "stack": [
+        "Next.js 15.4",
+        "React 19",
+        "Supabase",
+        "Firebase"
+      ],
+      "local_path": "D:\\Projects\\zambia-bridge",
+      "github": {
+        "repo": "Mabspro/levrage-zambia-bridge",
+        "url": "https://github.com/Mabspro/levrage-zambia-bridge"
+      },
+      "vercel": {
+        "live": true,
+        "url": "https://levrage-zambia-bridge.vercel.app",
+        "project": "levrage-zambia-bridge"
+      },
+      "warning": "No git remote. Local-only. Push to GitHub before major work.",
+      "role": "Government-vetted African investment opportunities with intelligence and direct partner connections.",
+      "superpower": "Curated deal flow with institutional credibility framing.",
+      "synergy": "Data feed from signals.zambia.ai macro signals would strengthen investment intelligence layer.",
+      "last_verified": "2026-05-18T20:05:00Z",
+      "package_name_mismatch": "package.json name zambia-bridge-temp vs folder zambia-bridge vs GitHub levrage-zambia-bridge",
+      "risk_flags": [
+        "vercel_deployed_no_local_git"
+      ],
+      "discovered_dependencies": [
+        "No coppercloud-orchestrator API calls found in scan; manifest synergy with signals.zambia.ai is conceptual only"
+      ],
+      "status": "dormant",
+      "has_env_secrets": true,
+      "studio_public": {
+        "export": false,
+        "reason": "Not listed on LevrAge Studios public portfolio"
+      }
+    },
+    {
+      "id": "zambia-untold",
+      "name": "Zambia Untold",
+      "tier": 2,
+      "tier_label": "Zambia Institutional — Community Archive",
+      "dormant_since": "2026-04-04",
+      "stack": [
+        "Next.js",
+        "React",
+        "Supabase (ydgfilrzuudiaucidmqy)",
+        "Three.js",
+        "Framer Motion"
+      ],
+      "local_path": "D:\\Projects\\zambia-untold",
+      "github": {
+        "repo": "Mabspro/Zambia-Untold",
+        "url": "https://github.com/Mabspro/Zambia-Untold"
+      },
+      "vercel": {
+        "live": true,
+        "url": "https://zambia-untold.vercel.app",
+        "project": "zambia-untold"
+      },
+      "role": "The history you were never taught. Community archive and institutional brief surface.",
+      "last_verified": "2026-05-18T20:05:00Z",
+      "has_env_secrets": true,
+      "status": "active",
+      "discovered_dependencies": [
+        "COPPERCLOUD_INTEGRATION.md spec + UI links to coppercloud-orchestrator.vercel.app; lib/coppercloud.ts integration documented but not verified live in scan",
+        "ZAMBIAMACRO_SUPABASE_URL points at signals Supabase kmgdubsikchyvyddiypn"
+      ],
+      "studio_public": {
+        "export": false,
+        "reason": "Not listed on LevrAge Studios public portfolio"
+      }
+    },
+    {
+      "id": "zambia-roadshow-2025",
+      "name": "Zambia Roadshow 2025",
+      "tier": 2,
+      "tier_label": "Zambia Institutional — Event Site",
+      "stack": [
+        "Next.js",
+        "Firebase",
+        "React"
+      ],
+      "local_path": "D:\\Projects\\zambia-roadshow-2025",
+      "role": "Official site for Zambia-U.S. State-Level Partnership Roadshow 2025.",
+      "last_verified": "2026-05-18T20:05:00Z",
+      "has_env_secrets": true,
+      "status": "dormant",
+      "github": {
+        "repo": "Mabspro/zambia-roadshow-2025",
+        "url": "https://github.com/Mabspro/zambia-roadshow-2025"
+      },
+      "studio_public": {
+        "export": false,
+        "reason": "Not listed on LevrAge Studios public portfolio"
+      }
+    },
+    {
+      "id": "zambiamacro-brief",
+      "name": "Zambia Macro Brief",
+      "tier": 2,
+      "tier_label": "Zambia Institutional — Macro Brief Surface",
+      "stack": [
+        "Remotion",
+        "React",
+        "TypeScript"
+      ],
+      "local_path": "D:\\Projects\\zambiamacro-brief",
+      "role": "Macro brief publication surface. Likely candidate to consume signals.zambia.ai outputs directly.",
+      "last_verified": "2026-05-18T20:05:00Z",
+      "last_commit_date": "2026-04-01",
+      "status": "dormant",
+      "github": {
+        "remote": false,
+        "note": "Local git repo with no origin remote"
+      },
+      "studio_public": {
+        "export": false,
+        "reason": "Not listed on LevrAge Studios public portfolio"
+      }
+    },
+    {
+      "id": "zanc-site",
+      "name": "ZANC Site",
+      "tier": 2,
+      "tier_label": "Community Work — Live (ZANC California)",
+      "stack": [
+        "Vite",
+        "React 18",
+        "Supabase",
+        "TypeScript"
+      ],
+      "local_path": "D:\\Projects\\ZANC-site",
+      "github": {
+        "remote": true,
+        "org": "zanc-california",
+        "repo": "zanc-site",
+        "url": "https://github.com/zanc-california/zanc-site"
+      },
+      "vercel": {
+        "live": true,
+        "url": "https://www.zancsac.com",
+        "vercel_project": "zanc-site"
+      },
+      "note": "Built for the ZANC California community. Stays live and maintained — not Tier 7 client work.",
+      "client_obligation": "active_maintained",
+      "role": "Content site with payments for Association of Zambians in California.",
+      "last_verified": "2026-05-18T21:59:00Z",
+      "status": "active",
+      "studio_public": {
+        "export": true,
+        "section": "community"
+      }
+    },
+    {
+      "id": "lobito-platform",
+      "name": "Lobito Platform (LobStar)",
+      "tier": 2,
+      "tier_label": "Zambia Institutional — Corridor Trust Infrastructure",
+      "dormant_since": "2026-04-04",
+      "stack": [
+        "Next.js 15.1",
+        "React 19",
+        "Firebase (lobstar-prod)",
+        "Python",
+        "Pinecone",
+        "Vercel"
+      ],
+      "local_path": "D:\\Projects\\lobito-platform",
+      "github": {
+        "repo": "Mabspro/lobstar-platform",
+        "url": "https://github.com/Mabspro/lobstar-platform"
+      },
+      "role": "Trust infrastructure for Lobito Corridor. Shares sovereign trust layer primitives with CopperCloud.",
+      "synergy": "Potential shared primitives with coppercloud-orchestrator. Activate when CopperCloud Sprint 8+ begins institutional expansion.",
+      "last_verified": "2026-05-18T20:05:00Z",
+      "package_name_mismatch": "package.json lobstar-platform vs folder lobito-platform vs GitHub lobstar-platform",
+      "has_env_secrets": true,
+      "vercel": {
+        "live": true,
+        "url": "https://lobstar-platform.vercel.app",
+        "project": "lobstar-platform"
+      },
+      "status": "dormant",
+      "discovered_dependencies": [
+        "No coppercloud cross-references in code scan"
+      ],
+      "studio_public": {
+        "export": false,
+        "reason": "Not listed on LevrAge Studios public portfolio"
+      }
+    },
+    {
+      "id": "levrage-solutions",
+      "name": "LevrAge Solutions",
+      "tier": 3,
+      "tier_label": "LevrAge Ecosystem — Main Platform",
+      "stack": [
+        "Next.js",
+        "Supabase",
+        "Sanity CMS",
+        "TypeScript"
+      ],
+      "local_path": "D:\\Projects\\LevrAge-Solutions",
+      "github": {
+        "repo": "Mabspro/levrage-strategy",
+        "url": "https://github.com/Mabspro/levrage-strategy"
+      },
+      "business_entity": "LevrAge LLC (separate from Mabspro sovereign stack)",
+      "role": "Innovation and economic diplomacy platform.",
+      "last_verified": "2026-05-18T20:05:00Z",
+      "has_env_secrets": true,
+      "status": "dormant",
+      "package_name_mismatch": "package.json leverage-platform vs folder LevrAge-Solutions vs GitHub levrage-strategy",
+      "studio_public": {
+        "export": true,
+        "section": "flagships"
+      }
+    },
+    {
+      "id": "levrage-studios",
+      "name": "LevrAge Innovation Studios",
+      "tier": 3,
+      "tier_label": "LevrAge Ecosystem — Studio Sub-brand",
+      "stack": [
+        "Next.js",
+        "TypeScript"
+      ],
+      "local_path": "D:\\Projects\\levrage-studios",
+      "github": {
+        "repo": "Mabspro/levrage-studio",
+        "url": "https://github.com/Mabspro/levrage-studio"
+      },
+      "warning": "No git remote. Local-only.",
+      "role": "Clean minimal studio site sub-brand.",
+      "last_verified": "2026-05-18T20:05:00Z",
+      "has_env_secrets": true,
+      "status": "dormant",
+      "studio_public": {
+        "export": false,
+        "reason": "Not listed on LevrAge Studios public portfolio"
+      }
+    },
+    {
+      "id": "network-manager",
+      "name": "Network Manager",
+      "tier": 3,
+      "tier_label": "LevrAge Ecosystem — RAG Networking",
+      "stack": [
+        "Next.js 15.1",
+        "React 19",
+        "Firebase (levrage-prod)",
+        "Upstash Redis",
+        "Pinecone",
+        "Vercel"
+      ],
+      "local_path": "D:\\Projects\\network-manager",
+      "github": {
+        "repo": "Mabspro/leverage",
+        "url": "https://github.com/Mabspro/leverage"
+      },
+      "vercel": {
+        "live": true,
+        "url": "https://www.levrage.app",
+        "project": "leverage-prod"
+      },
+      "warning": "Vercel-deployed but no git remote found locally.",
+      "role": "Post-LinkedIn networking platform powered by RAG and degrees-of-separation intelligence.",
+      "last_verified": "2026-05-18T20:05:00Z",
+      "risk_flags": [
+        "vercel_deployed_no_local_git",
+        "vercel_project_id_collision_with_lobito-platform"
+      ],
+      "has_env_secrets": true,
+      "status": "dormant",
+      "studio_public": {
+        "export": true,
+        "section": "flagships"
+      }
+    },
+    {
+      "id": "alpha01",
+      "name": "Alpha01 Medical Consultants",
+      "tier": 7,
+      "tier_label": "Client Work — Medical Consultants (Active)",
+      "stack": [
+        "Next.js/Vite web",
+        "Node server",
+        "Supabase",
+        "TypeScript"
+      ],
+      "local_path": "D:\\Projects\\Alpha01",
+      "github": {
+        "remote": true,
+        "org": "LevrAge-LLC",
+        "repo": "alpha01",
+        "url": "https://github.com/LevrAge-LLC/alpha01"
+      },
+      "vercel": {
+        "live": true,
+        "url": "https://alpha01.vercel.app",
+        "vercel_project": "alpha01"
+      },
+      "note": "Only live maintained client project in Tier 7. Built for medical consultants client.",
+      "client_obligation": "active_maintained",
+      "role": "Medical consultants telemedicine platform.",
+      "last_verified": "2026-05-18T21:59:00Z",
+      "status": "active",
+      "package_name_mismatch": "package.json alpha01-telemedicine-platform vs folder Alpha01 vs GitHub alpha01",
+      "studio_public": {
+        "export": true,
+        "section": "client_mvps"
+      }
+    },
+    {
+      "id": "pantry",
+      "name": "Pantry",
+      "tier": 4,
+      "tier_label": "Consumer App — Grocery Assistant",
+      "stack": [
+        "Next.js 15.5",
+        "React 19",
+        "Firebase",
+        "Genkit AI",
+        "Upstash Redis",
+        "Sentry"
+      ],
+      "local_path": "D:\\Projects\\pantry",
+      "github": {
+        "repo": "pantry",
+        "url": "https://github.com/Mabspro/pantry",
+        "remote": false,
+        "note": "GitHub repo exists; local folder has no .git",
+        "org": "Mabspro"
+      },
+      "warning": "No git remote. Local-only. 85-90% production ready — push to GitHub.",
+      "role": "Grocery run assistant. Reduces cognitive load, captures and organizes grocery lists.",
+      "notes": "v0.1.0. Firebase hosting. Sentry integrated.",
+      "last_verified": "2026-05-18T20:05:00Z",
+      "has_env_secrets": true,
+      "status": "dormant",
+      "package_name_mismatch": "package.json name nextn vs folder pantry vs GitHub pantry",
+      "studio_public": {
+        "export": true,
+        "section": "labs"
+      }
+    },
+    {
+      "id": "afriai-io",
+      "name": "AfriAI.io",
+      "tier": 4,
+      "tier_label": "Consumer App — Africa Pre-Startup Hub",
+      "stack": [
+        "Next.js",
+        "Firebase",
+        "Framer Motion",
+        "TypeScript"
+      ],
+      "local_path": "D:\\Projects\\afriai.io",
+      "github": {
+        "repo": "Mabspro/Afriai.io",
+        "url": "https://github.com/Mabspro/Afriai.io"
+      },
+      "vercel": {
+        "live": true,
+        "url": "https://www.afriai.io",
+        "project": "afriai-io"
+      },
+      "warning": "Vercel-deployed but no git remote.",
+      "role": "Africa's pre-startup intelligence hub.",
+      "last_verified": "2026-05-18T20:05:00Z",
+      "risk_flags": [
+        "vercel_deployed_no_local_git"
+      ],
+      "has_env_secrets": true,
+      "status": "dormant",
+      "studio_public": {
+        "export": true,
+        "section": "labs"
+      }
+    },
+    {
+      "id": "crm-erp-zm",
+      "name": "CRM/ERP ZM (Nsaka)",
+      "tier": 4,
+      "tier_label": "Consumer App — Zambia CRM/ERP",
+      "stack": [
+        "Turbo monorepo",
+        "Next.js",
+        "Prisma",
+        "Go (edge-node, simulator)",
+        "TypeScript"
+      ],
+      "local_path": "D:\\Projects\\crm-erp-zm",
+      "github": {
+        "org": "Mabspro",
+        "repo": "nsaka",
+        "url": "https://github.com/Mabspro/nsaka"
+      },
+      "note": "Local folder name (crm-erp-zm) differs from GitHub repo name (nsaka).",
+      "role": "CRM and ERP platform for Zambia market.",
+      "last_verified": "2026-05-18T20:05:00Z",
+      "has_env_secrets": true,
+      "status": "active",
+      "package_name_mismatch": "package.json zambia-agro-lims vs folder crm-erp-zm vs GitHub nsaka",
+      "studio_public": {
+        "export": false,
+        "reason": "Not listed on LevrAge Studios public portfolio"
+      }
+    },
+    {
+      "id": "link360",
+      "name": "Link360",
+      "tier": 4,
+      "tier_label": "Consumer App — Container Shipping",
+      "stack": [
+        "Next.js",
+        "Supabase",
+        "React Hook Form",
+        "Zod"
+      ],
+      "local_path": "D:\\Projects\\link360",
+      "github": {
+        "repo": "Mabspro/Link360",
+        "url": "https://github.com/Mabspro/Link360"
+      },
+      "role": "MVP web app to collect shipping interest and display container completion thermometer.",
+      "last_verified": "2026-05-18T20:05:00Z",
+      "has_env_secrets": true,
+      "status": "dormant",
+      "studio_public": {
+        "export": true,
+        "section": "labs"
+      }
+    },
+    {
+      "id": "healyri",
+      "name": "Healyri",
+      "tier": 4,
+      "tier_label": "Consumer App — Health (Mobile)",
+      "stack": [
+        "Flutter 3",
+        "Dart",
+        "Firebase"
+      ],
+      "local_path": "D:\\Projects\\healyri",
+      "note": "Completely different stack from rest of portfolio. Firebase hosting + Firestore. No cross-project dependencies.",
+      "role": "Health application. Mobile-first.",
+      "last_verified": "2026-05-18T20:05:00Z",
+      "status": "active",
+      "github": {
+        "repo": "healyri",
+        "url": "https://github.com/Mabspro/healyri",
+        "remote": false,
+        "note": "GitHub repo exists; local folder has no .git",
+        "org": "Mabspro"
+      },
+      "studio_public": {
+        "export": true,
+        "section": "flagships"
+      }
+    },
+    {
+      "id": "master-scraper",
+      "name": "Master Scraper",
+      "tier": 5,
+      "tier_label": "Data Tool — Housing Market Scraper",
+      "stack": [
+        "Python"
+      ],
+      "local_path": "D:\\Projects\\master-scraper",
+      "github": {
+        "remote": false
+      },
+      "warning": "Local Python scraper only. Not the same as Mabspro/housing_project (Vercel housing-dashboard) — see housing-project entry.",
+      "role": "Housing market data from Zillow, Bureau of Labor Statistics, and other sources.",
+      "last_verified": "2026-05-18T21:59:00Z",
+      "status": "dormant",
+      "studio_public": {
+        "export": false,
+        "reason": "Not listed on LevrAge Studios public portfolio"
+      }
+    },
+    {
+      "id": "housing-project",
+      "name": "Housing Dashboard",
+      "tier": 5,
+      "tier_label": "Data Tool — Housing Dashboard (GitHub Only)",
+      "status": "dormant",
+      "stack": [
+        "Next.js"
+      ],
+      "local_path": null,
+      "local_clone_required": false,
+      "github": {
+        "remote": true,
+        "org": "Mabspro",
+        "repo": "housing_project",
+        "url": "https://github.com/Mabspro/housing_project"
+      },
+      "vercel": {
+        "live": true,
+        "url": "https://housing-dashboard-six.vercel.app",
+        "vercel_project": "housing-dashboard"
+      },
+      "role": "Housing analytics dashboard. Deployed from GitHub only — no D:\\Projects clone needed.",
+      "note": "Stays on GitHub. Edit via repo clone elsewhere or Codespaces; not part of local portfolio disk layout.",
+      "last_verified": "2026-05-18T21:59:00Z",
+      "studio_public": {
+        "export": false,
+        "reason": "GitHub-only; no studio listing"
+      }
+    },
+    {
+      "id": "edc-consulting",
+      "name": "EDC Consulting",
+      "tier": 7,
+      "tier_label": "Client Work — Consulting Site (Stalled)",
+      "stack": [
+        "Next.js",
+        "TypeScript"
+      ],
+      "local_path": "D:\\Projects\\EDC-Consulting",
+      "github": {
+        "remote": true,
+        "org": "Mabspro",
+        "repo": "EDC",
+        "url": "https://github.com/Mabspro/EDC"
+      },
+      "vercel": {
+        "live": true,
+        "url": "https://edc-xi.vercel.app",
+        "vercel_project": "edc"
+      },
+      "client_obligation": "none_stalled",
+      "role": "Website for Excellence Data Consulting LLC, led by Dr. Komi Modji. Live on Vercel; no active dev obligation.",
+      "last_verified": "2026-05-18T21:59:00Z",
+      "status": "stalled",
+      "risk_flags": [
+        "no_gitignore_for_env_files"
+      ],
+      "studio_public": {
+        "export": true,
+        "section": "client_mvps"
+      }
+    },
+    {
+      "id": "mufulira-landview",
+      "name": "Mufulira Landview",
+      "tier": 6,
+      "tier_label": "Asset — GIS/Map Data",
+      "stack": [],
+      "local_path": "D:\\Projects\\Mufulira_Landview",
+      "role": "KML/KMZ map contour files for Mufulira. HTML map viewer.",
+      "note": "Not a development project. Geospatial asset.",
+      "last_verified": "2026-05-18T20:05:00Z",
+      "status": "asset",
+      "github": {
+        "remote": false
+      },
+      "studio_public": {
+        "export": false,
+        "reason": "Not listed on LevrAge Studios public portfolio"
+      }
+    },
+    {
+      "id": "pbs",
+      "name": "PBS",
+      "tier": 7,
+      "tier_label": "Client Work — PBS Site (Stalled)",
+      "stack": [
+        "Next.js",
+        "Tailwind"
+      ],
+      "local_path": "D:\\Projects\\PBS",
+      "github": {
+        "remote": true,
+        "org": "Mabspro",
+        "repo": "PBS",
+        "url": "https://github.com/Mabspro/PBS"
+      },
+      "vercel": {
+        "live": true,
+        "url": "https://pbs-three.vercel.app",
+        "vercel_project": "pbs"
+      },
+      "client_obligation": "none_stalled",
+      "role": "Client site live on Vercel. Local PBS folder may hold docs; canonical app is Mabspro/PBS on GitHub.",
+      "last_verified": "2026-05-18T21:59:00Z",
+      "status": "stalled",
+      "studio_public": {
+        "export": true,
+        "section": "client_mvps"
+      }
+    },
+    {
+      "id": "quick-projects-april-trip",
+      "name": "April Trip",
+      "tier": 6,
+      "tier_label": "Personal — Quick Project",
+      "status": "dormant",
+      "stack": [
+        "Vite",
+        "React (JSX)",
+        "Convex"
+      ],
+      "local_path": "D:\\Projects\\quick-projects\\April-Trip",
+      "github": {
+        "repo": "Mabspro/April-Trip",
+        "url": "https://github.com/Mabspro/April-Trip"
+      },
+      "warning": "No git remote. Local only.",
+      "role": "Personal trip checklist app. Vite + React + Convex. Built March 2026.",
+      "note": "Nested under quick-projects/. Contains Convex Claude skills in .claude/skills/.",
+      "last_verified": "2026-05-18",
+      "studio_public": {
+        "export": false,
+        "reason": "Not listed on LevrAge Studios public portfolio"
+      }
+    },
+    {
+      "id": "invest-match-system",
+      "name": "ZIMPACT — Zambia-US Investment Matching",
+      "tier": 2,
+      "tier_label": "Zambia Institutional — Investment Platform",
+      "status": "dormant",
+      "stack": [
+        "React",
+        "Firebase",
+        "Node.js",
+        "Express"
+      ],
+      "local_path": "D:\\Projects\\invest-match-system",
+      "github": {
+        "remote": false
+      },
+      "warning": "No git remote. Local only.",
+      "role": "Full-stack investment matching platform for Zambia-US opportunities. Investor/project/meeting/roadshow controllers. Firebase backend.",
+      "last_verified": "2026-05-18",
+      "studio_public": {
+        "export": false,
+        "reason": "Not listed on LevrAge Studios public portfolio"
+      }
+    },
+    {
+      "id": "tenat",
+      "name": "Tenat — Property Management",
+      "tier": 4,
+      "tier_label": "Consumer App — Property Management (PHP)",
+      "status": "dormant",
+      "stack": [
+        "PHP",
+        "MySQL",
+        "WebSocket",
+        "Composer"
+      ],
+      "local_path": "D:\\Projects\\tenat",
+      "github": {
+        "remote": false
+      },
+      "warning": "No git remote. Local only.",
+      "role": "PHP property management system. Landlord, tenant, and worker dashboards. Fault reporting, maintenance tracking, real-time messaging.",
+      "note": "Evolved version of chalospace (2026 vs 2025). Same app, later stage.",
+      "last_verified": "2026-05-18",
+      "studio_public": {
+        "export": true,
+        "section": "labs"
+      }
+    },
+    {
+      "id": "chalospace",
+      "name": "ChaloSpace — Property Management (v1)",
+      "tier": 4,
+      "tier_label": "Consumer App — Property Management (PHP, archived)",
+      "status": "dormant",
+      "stack": [
+        "PHP",
+        "MySQL"
+      ],
+      "local_path": "D:\\Projects\\chalospace",
+      "github": {
+        "remote": false
+      },
+      "warning": "No git remote. Local only.",
+      "role": "Original version of tenat. PHP property management. Last touched Jan 2025.",
+      "note": "Same codebase as tenat at an earlier stage. Likely superseded by tenat.",
+      "last_verified": "2026-05-18",
+      "studio_public": {
+        "export": true,
+        "section": "labs"
+      }
+    },
+    {
+      "id": "the-wealth-shift",
+      "name": "The Wealth Shift",
+      "tier": 7,
+      "tier_label": "Client Work — Finance/Wealth (Stalled)",
+      "status": "stalled",
+      "stack": [
+        "Next.js",
+        "Supabase",
+        "Sanity CMS",
+        "TypeScript"
+      ],
+      "local_path": "D:\\Projects\\the_wealth_shift",
+      "github": {
+        "remote": true,
+        "org": "Mabspro",
+        "repo": "The_Walth_Shift",
+        "url": "https://github.com/Mabspro/The_Walth_Shift"
+      },
+      "vercel": {
+        "live": true,
+        "url": "https://thewealthsshift.com",
+        "vercel_project": "the-wealth-shift"
+      },
+      "client_obligation": "none_stalled",
+      "role": "Finance/wealth platform. Live domain; dormant dev. Next.js + Supabase + Sanity CMS.",
+      "last_verified": "2026-05-18T21:59:00Z",
+      "studio_public": {
+        "export": true,
+        "section": "client_mvps"
+      }
+    },
+    {
+      "id": "zambezi",
+      "name": "Zambezi",
+      "tier": 2,
+      "tier_label": "Zambia Institutional — Platform (TBD)",
+      "status": "dormant",
+      "stack": [
+        "Vite",
+        "React",
+        "Firebase",
+        "Tailwind",
+        "TypeScript"
+      ],
+      "local_path": "D:\\Projects\\zambezi",
+      "github": {
+        "remote": false,
+        "has_github_folder": true
+      },
+      "warning": "No git remote despite having .github folder.",
+      "role": "Firebase + Vite + Tailwind platform. Has .github workflows. Purpose TBD from README.",
+      "last_verified": "2026-05-18",
+      "studio_public": {
+        "export": false,
+        "reason": "Not listed on LevrAge Studios public portfolio"
+      }
+    },
+    {
+      "id": "idream-crm",
+      "name": "iDream CRM",
+      "tier": 1,
+      "tier_label": "Sovereign Infrastructure — iDream Field Operations CRM",
+      "status": "active",
+      "stack": [
+        "Next.js",
+        "Prisma",
+        "SQLite",
+        "D3",
+        "TypeScript",
+        "Recharts"
+      ],
+      "local_path": "D:\\Projects\\idream-crm",
+      "github": {
+        "remote": false
+      },
+      "warning": "No git remote. Has real operational data files (Excel sponsorship/attendance records).",
+      "role": "CRM for iDream field operations. Clinic, school, sponsorship, library, farm lanes. Real data: attendance registers, sponsorship records. Prisma schema + seed. D3/Recharts dashboards.",
+      "note": "First production instance of the gravity-crm pattern. iDream entities use this app; D:\\Projects\\gravity-crm is the general pattern spec only. API-connected to CopperCloud — not embedded in orchestrator.",
+      "pattern_spec": "gravity-crm",
+      "synergy": "operation-idream tenant is seeded in coppercloud-orchestrator. Field-ops counterpart to sovereign trust layer.",
+      "context_dependencies": {
+        "if_modifying": "data schema or lane types",
+        "check_first": [
+          "coppercloud-orchestrator crm-store.ts operation-idream tenant definition"
+        ]
+      },
+      "last_verified": "2026-05-18",
+      "has_env_secrets": true,
+      "discovered_dependencies": [
+        "COPPERCLOUD_SYNC_URL in .env.local points at orchestrator dashboard /api/health (localhost:3001 in dev)",
+        "lib/sync/adapter.ts POSTs sync payloads when URL set; local-only if unset",
+        "Manifest note: operation-idream tenant seeded in coppercloud-orchestrator crm-store"
+      ],
+      "studio_public": {
+        "export": false,
+        "reason": "Not listed on LevrAge Studios public portfolio"
+      }
+    },
+    {
+      "id": "read-lens",
+      "name": "Read Lens",
+      "tier": 5,
+      "tier_label": "Data Tool — Research Reading/Enrichment",
+      "status": "dormant",
+      "stack": [
+        "Next.js",
+        "JavaScript"
+      ],
+      "local_path": "D:\\Projects\\read-lens",
+      "github": {
+        "repo": "Mabspro/read-lens",
+        "url": "https://github.com/Mabspro/read-lens"
+      },
+      "role": "Research reading and content enrichment app. Source extractors, report markdown generation, tweet curator. Likely feeds into isibalo research pipeline.",
+      "synergy": "Natural feeder into Data-Sovereignty-Research-Pipeline for web content intake.",
+      "last_verified": "2026-05-19T12:00:00Z",
+      "last_commit_date": "2026-03-08",
+      "has_env_secrets": true,
+      "discovered_dependencies": [
+        "No coppercloud-orchestrator integration in code scan",
+        "Potential upstream feeder for isibalo web ingest (conceptual only)"
+      ],
+      "studio_public": {
+        "export": false,
+        "reason": "Not listed on LevrAge Studios public portfolio"
+      }
+    },
+    {
+      "id": "refridgex",
+      "name": "RefridgeX",
+      "tier": 7,
+      "tier_label": "Client Work — Commercial Refrigeration (Scaffolding)",
+      "status": "scaffolding",
+      "dormant_since": "2025-07-14",
+      "stack": [
+        "Next.js 15.3",
+        "React 19",
+        "Firebase (refridgex)",
+        "Tailwind CSS 4",
+        "TypeScript"
+      ],
+      "local_path": "D:\\Projects\\refridgex\\refridgex",
+      "local_folder_parent": "refridgex",
+      "github": {
+        "remote": false,
+        "org": "Mabspro",
+        "repo": "RefridgeX",
+        "url": "https://github.com/Mabspro/RefridgeX",
+        "note": "Git history in .git_disabled; folder is not an active git clone"
+      },
+      "vercel": {
+        "live": true,
+        "url": "https://refridge-x.vercel.app",
+        "vercel_project": "refridge-x"
+      },
+      "has_env_secrets": false,
+      "client_obligation": "none_scaffolding",
+      "warning": "Keep and repurpose later. Fix Firebase keys in src/lib/firebase.js before re-enabling git. Nested path refridgex/refridgex/; .git_disabled.",
+      "role": "Commercial refrigeration inventory and quote site for MC Store Fixtures. Scaffolding — not active client obligation.",
+      "discovered_dependencies": [
+        "No portfolio cross-project dependencies",
+        "Firebase project refridgex only"
+      ],
+      "last_verified": "2026-05-19T12:00:00Z",
+      "last_commit_date": "2025-07-14",
+      "studio_public": {
+        "export": true,
+        "section": "labs"
+      }
+    }
+  ],
+  "infrastructure_audit": {
+    "note": "Run this pass to find consolidation opportunities before Sprint 10.",
+    "questions": [
+      "How many separate Supabase/Neon/Postgres instances are running across the portfolio?",
+      "How many Upstash Redis instances? (coppercloud confirmed, others unknown)",
+      "Which Vercel projects are on paid tier vs hobby?",
+      "Which projects share auth providers that could be unified?",
+      "pantry, afriai.io, zambia-bridge, network-manager, levrage-studios, master-scraper have no git remote — backup risk."
+    ],
+    "known_instances": {
+      "upstash": [
+        "coppercloud-orchestrator",
+        "pantry",
+        "network-manager"
+      ],
+      "postgres_neon_supabase": [
+        "supabase/kmgdubsikchyvyddiypn",
+        "supabase/ydgfilrzuudiaucidmqy",
+        "supabase/invrylozaztsukbtiznj",
+        "supabase/isaapeitimsxwheogmzk",
+        "supabase/xomxzfewxxrrnlnnlhus",
+        "supabase/iibtbawfrnfeybpjfgiv",
+        "supabase/eevvnxruibfqlzihzcxl",
+        "neon/ep-long-recipe-anw4yaql-pooler",
+        "upstash/redis (coppercloud-orchestrator)",
+        "firebase/coppercloud-ssot",
+        "firebase/lobstar-prod",
+        "firebase/levrage-prod",
+        "firebase/afriai-io",
+        "firebase/refridgex",
+        "localhost/postgres (rise-data-pipeline, crm-erp-zm dev)"
+      ],
+      "vercel_live": [
+        "coppercloud-orchestrator",
+        "afriai.io",
+        "zambia-bridge (levrage-zambia-bridge)",
+        "network-manager",
+        "lobito-platform",
+        "coppercloud-ssot (code reference)"
+      ]
+    }
+  },
+  "no_remote_risk": [],
+  "local_not_cloned": {
+    "note": "GitHub remotes exist and are wired in manifest; these D:\\Projects folders are not active git clones. Clone before major edits.",
+    "folders": [
+      "pantry",
+      "zambia-bridge",
+      "zambia-roadshow-2025",
+      "healyri",
+      "refridgex",
+      "afriai.io",
+      "levrage-studios",
+      "network-manager",
+      "idream-crm",
+      "gravity-crm",
+      "zambiamacro-brief",
+      "master-scraper"
+    ]
+  },
+  "mapping_sprint_findings": {
+    "sprint_date": "2026-05-18",
+    "rescan_date": "2026-05-19",
+    "total_projects_scanned": 35,
+    "manifest_project_count": 36,
+    "manifest_note": "36 entries: 35 D:\\Projects folders + housing-project (GitHub-only)",
+    "scan_note": "35 top-level folders in D:\\Projects; 35 manifest entries after adding refridgex (2026-05-19 rescan). Eight projects were added to manifest between sprints (idream-crm, invest-match-system, tenat, chalospace, the_wealth_shift, zambezi, read-lens, quick-projects-april-trip).",
+    "no_remote_count": 11,
+    "no_remote_local": [
+      "afriai.io",
+      "EDC-Consulting",
+      "pantry",
+      "zambia-bridge",
+      "levrage-studios",
+      "master-scraper",
+      "network-manager",
+      "gravity-crm",
+      "zambia-roadshow-2025",
+      "healyri",
+      "zambiamacro-brief"
+    ],
+    "github_repo_exists_but_not_cloned": [
+      {
+        "folder": "pantry",
+        "repo": "https://github.com/Mabspro/pantry"
+      },
+      {
+        "folder": "zambia-bridge",
+        "repo": "https://github.com/Mabspro/levrage-zambia-bridge"
+      },
+      {
+        "folder": "zambia-roadshow-2025",
+        "repo": "https://github.com/Mabspro/zambia-roadshow-2025"
+      },
+      {
+        "folder": "healyri",
+        "repo": "https://github.com/Mabspro/healyri"
+      },
+      {
+        "folder": "refridgex",
+        "repo": "https://github.com/Mabspro/RefridgeX",
+        "note": "App lives at refridgex/refridgex/; .git_disabled not active clone"
+      }
+    ],
+    "vercel_without_local_git": [
+      "afriai.io",
+      "zambia-bridge",
+      "network-manager"
+    ],
+    "db_instances": [
+      "supabase/kmgdubsikchyvyddiypn",
+      "supabase/ydgfilrzuudiaucidmqy",
+      "supabase/invrylozaztsukbtiznj",
+      "supabase/isaapeitimsxwheogmzk",
+      "supabase/xomxzfewxxrrnlnnlhus",
+      "supabase/iibtbawfrnfeybpjfgiv",
+      "supabase/eevvnxruibfqlzihzcxl",
+      "neon/ep-long-recipe-anw4yaql-pooler",
+      "upstash/redis (coppercloud-orchestrator)",
+      "firebase/coppercloud-ssot",
+      "firebase/lobstar-prod",
+      "firebase/levrage-prod",
+      "firebase/afriai-io",
+      "localhost/postgres (rise-data-pipeline, crm-erp-zm dev)",
+      "firebase/refridgex"
+    ],
+    "db_instance_count": 15,
+    "vercel_projects": [
+      {
+        "projectId": "prj_evs5PM0KStCrKHzB2Fpp3rFSfb4P",
+        "name": "coppercloud-orchestrator",
+        "local": "coppercloud-orchestrator"
+      },
+      {
+        "projectId": "prj_n9r9hp6NAjDeSGnkwWsYVarUQNcO",
+        "name": "levrage-zambia-bridge",
+        "local": "zambia-bridge"
+      },
+      {
+        "projectId": "prj_5luOM9DCjRTuInX6fLh7FzgWL8WX",
+        "name": "lobstar-platform / network-manager COLLISION",
+        "local": [
+          "lobito-platform",
+          "network-manager"
+        ]
+      },
+      {
+        "projectId": "prj_T74IPGZ6hwe1qTv5fFUJBCqJJPoI",
+        "name": "afriai.io",
+        "local": "afriai.io"
+      }
+    ],
+    "cross_project_api_calls": [
+      "signals.zambia.ai → coppercloud-orchestrator (/api/workload, /api/attestation) via GitHub Actions",
+      "rise-data-pipeline → coppercloud-orchestrator (/api/workload, /api/jobs/{id}/receipt) via common/coppercloud_client.py",
+      "zambia-untold → coppercloud-orchestrator (COPPERCLOUD_INTEGRATION.md spec + UI links; live API not verified in scan)",
+      "idream-crm → coppercloud-orchestrator dashboard /api/health via COPPERCLOUD_SYNC_URL (lib/sync/adapter.ts; dev localhost)"
+    ],
+    "risks": {
+      "vercel_no_git": [
+        "afriai.io",
+        "zambia-bridge",
+        "network-manager"
+      ],
+      "package_name_mismatches": [
+        "zambia-bridge: zambia-bridge-temp vs levrage-zambia-bridge",
+        "pantry: nextn vs pantry",
+        "LevrAge-Solutions: leverage-platform vs levrage-strategy",
+        "crm-erp-zm: zambia-agro-lims vs nsaka",
+        "Alpha01: alpha01-telemedicine-platform vs alpha01",
+        "lobito-platform: lobstar-platform vs lobstar-platform repo",
+        "coppercloud-orchestrator dashboard: coppercloud-dashboard"
+      ],
+      "no_gitignore_env": [
+        "EDC-Consulting"
+      ],
+      "node_modules_tracked": "none detected across all git repos",
+      "git_safe_directory_blocks": [
+        "signals.zambia.ai",
+        "rise-data-pipeline",
+        "zambiamacro-brief"
+      ]
+    },
+    "surprises": [
+      "rise-data-pipeline has GitHub remote (manifest previously empty github)",
+      "signals.zambia.ai remote is Mabspro/signals.zambia (not signals.zambia.ai)",
+      "network-manager and lobito-platform share identical Vercel projectId",
+      "pantry and zambia-bridge have GitHub repos but local folders are not git clones",
+      "rise-data-pipeline duplicates coppercloud HTTP client instead of coppercloud-client package",
+      "signals.zambia.ai and zambia-untold share Supabase kmgdubsikchyvyddiypn",
+      "coppercloud-ssot.vercel.app referenced in code; no local .vercel folder",
+      "gravity-crm Tier 1 entry is spec-only (START_HERE.md, no app code)",
+      "refridgex newly moved to D:\\Projects — not in original sprint; nested refridgex/refridgex/ with .git_disabled",
+      "read-lens has GitHub remote but was marked remote:false until 2026-05-19 rescan",
+      "idream-crm moved from C:\\Users\\mabsp\\Tools\\idream-CRM — Tier 1 with live CopperCloud sync adapter"
+    ],
+    "migration_finalized_2026_05_18": {
+      "tier7_client_work": [
+        "the-wealth-shift",
+        "pbs",
+        "refridgex",
+        "edc-consulting",
+        "alpha01"
+      ],
+      "live_maintained": [
+        "alpha01",
+        "zanc-site"
+      ],
+      "housing_project": "github_only — no local clone under D:\\Projects",
+      "gravity_pattern": "spec=gravity-crm, production=idream-crm"
+    },
+    "rescan_2026_05_19": {
+      "newly_discovered_folders": [
+        "refridgex"
+      ],
+      "already_in_manifest_from_prior_edit": [
+        "idream-crm",
+        "invest-match-system",
+        "tenat",
+        "chalospace",
+        "the_wealth_shift",
+        "zambezi",
+        "read-lens",
+        "quick-projects-april-trip"
+      ],
+      "corrections": [
+        "read-lens: github.remote true, url https://github.com/Mabspro/read-lens",
+        "idream-crm: discovered_dependencies for COPPERCLOUD_SYNC_URL"
+      ]
+    }
+  },
+  "platform_map_gaps": {
+    "tier1_not_connected_by_code": [
+      {
+        "pair": [
+          "coppercloud-ai",
+          "coppercloud-orchestrator"
+        ],
+        "note": "Marketing static site; no API client"
+      },
+      {
+        "pair": [
+          "coppercloud-ssot",
+          "coppercloud-orchestrator"
+        ],
+        "note": "Canon registry; no HTTP integration"
+      },
+      {
+        "pair": [
+          "isibalo-research-pipeline",
+          "signals.zambia.ai"
+        ],
+        "note": "Intended intelligence feedback — zero code references"
+      },
+      {
+        "pair": [
+          "isibalo-research-pipeline",
+          "coppercloud-orchestrator"
+        ],
+        "note": "No API calls"
+      },
+      {
+        "pair": [
+          "rise-data-pipeline",
+          "coppercloud-ssot"
+        ],
+        "note": "No shared schema imports"
+      },
+      {
+        "pair": [
+          "gravity-crm",
+          "coppercloud-orchestrator"
+        ],
+        "note": "Spec only — pattern documented in gravity-crm; live API connection is idream-crm"
+      },
+      {
+        "pair": [
+          "idream-crm",
+          "coppercloud-orchestrator"
+        ],
+        "note": "Live partial — COPPERCLOUD_SYNC_URL /api/health; first gravity-crm production instance"
+      }
+    ],
+    "duplicated_logic_for_coppercloud_client": [
+      "rise-data-pipeline/common/coppercloud_client.py — local HTTP client + receipt DB persistence",
+      "signals.zambia.ai/pipelines/coppercloud/ — coppercloud-client via orchestrator repo checkout in CI",
+      "zambia-untold/COPPERCLOUD_INTEGRATION.md — planned TypeScript client",
+      "coppercloud-orchestrator/dashboard — canonical Ed25519 + receipt schema (source of truth)"
+    ],
+    "ipc_actual_vs_intended": {
+      "live": [
+        "signals.zambia.ai → coppercloud-orchestrator HTTP (/api/workload + /api/attestation)",
+        "rise-data-pipeline → coppercloud-orchestrator HTTP (collector receipts via common/coppercloud_client.py)"
+      ],
+      "partial": [
+        "zambia-untold → orchestrator (integration doc + marketing links; implementation not verified)",
+        "idream-crm → orchestrator dashboard /api/health sync (COPPERCLOUD_SYNC_URL; not full receipt API)"
+      ],
+      "intended_zero_groundwork": [
+        "Shared Upstash fabric for intelligence feedback loop",
+        "Data-Sovereignty-Research-Pipeline → signals.zambia.ai feedback",
+        "Data-Sovereignty-Research-Pipeline → coppercloud-ssot automated claim push",
+        "gravity-crm → CopperCloud API consumer",
+        "lobito-platform → shared coppercloud primitives",
+        "zambia-bridge → signals.zambia.ai macro feed",
+        "rise-data-pipeline ← orchestrator receipt primitives as shared library (uses ad-hoc client only)"
+      ]
+    }
+  },
+  "vercel_project_map": {
+    "_status": "planning_only — not implemented",
+    "generated": "2026-05-19",
+    "source": "Vercel team dashboard export (user-provided)",
+    "purpose": "Canonical map from Vercel project name → production URL → GitHub repo → local manifest id. Use before reconnecting repos, deleting duplicates, or updating manifest vercel blocks.",
+    "tier7_client_work_domains": {
+      "stalled": [
+        {
+          "manifest_id": "the-wealth-shift",
+          "domain": "thewealthsshift.com"
+        },
+        {
+          "manifest_id": "pbs",
+          "domain": "pbs-three.vercel.app"
+        },
+        {
+          "manifest_id": "edc-consulting",
+          "domain": "edc-xi.vercel.app"
+        }
+      ],
+      "scaffolding": [
+        {
+          "manifest_id": "refridgex",
+          "domain": "refridge-x.vercel.app",
+          "note": "Fix Firebase keys before re-enabling git"
+        }
+      ],
+      "active": [
+        {
+          "manifest_id": "alpha01",
+          "domain": "alpha01.vercel.app"
+        }
+      ]
+    },
+    "live_maintained_community": [
+      {
+        "manifest_id": "zanc-site",
+        "domain": "www.zancsac.com",
+        "tier": 2
+      }
+    ],
+    "summary": {
+      "vercel_projects_listed": 28,
+      "git_connected": 24,
+      "git_disconnected": 4,
+      "mapped_to_local_manifest": 22,
+      "duplicate_deployments": 3,
+      "vercel_orphans_no_git": 4,
+      "local_projects_no_vercel_in_list": [
+        "coppercloud.ai (folder) — see coppercloud-ai + copper-cloud-ai Vercel twins",
+        "network-manager — superseded by leverage-prod (Mabspro/leverage)?",
+        "invest-match-system",
+        "tenat",
+        "chalospace",
+        "zambezi",
+        "idream-crm",
+        "gravity-crm",
+        "isibalo-research-pipeline",
+        "crm-erp-zm",
+        "healyri",
+        "pantry",
+        "master-scraper",
+        "Mufulira_Landview",
+        "zambiamacro-brief"
+      ]
+    },
+    "projects": [
+      {
+        "vercel_name": "coppercloud-orchestrator",
+        "production_urls": [
+          "https://coppercloud-orchestrator.vercel.app"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "coppercloud-orchestrator",
+          "branch": "main",
+          "last_deploy": "2026-05-18"
+        },
+        "manifest_id": "coppercloud-orchestrator",
+        "local_path": "D:\\Projects\\coppercloud-orchestrator",
+        "tier": 1,
+        "notes": "Trust layer hub. Canonical orchestrator deployment."
+      },
+      {
+        "vercel_name": "signals-zambia",
+        "production_urls": [
+          "https://signals-zambia.vercel.app"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "signals.zambia",
+          "branch": "main",
+          "last_deploy": "2026-05-18"
+        },
+        "manifest_id": "signals-zambia-ai",
+        "local_path": "D:\\Projects\\signals.zambia.ai",
+        "tier": 1,
+        "notes": "Vercel name differs from folder (signals.zambia.ai) and repo (signals.zambia)."
+      },
+      {
+        "vercel_name": "rise-data-dashboard",
+        "production_urls": [
+          "https://rise-data-dashboard.vercel.app"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "rise-data-pipeline",
+          "branch": "cleanup/repo-structure",
+          "last_deploy": "2026-05-05"
+        },
+        "manifest_id": "rise-data-pipeline",
+        "local_path": "D:\\Projects\\rise-data-pipeline",
+        "tier": 1,
+        "notes": "Deploys from rise-data-pipeline repo; branch cleanup/repo-structure not main. Likely rise_dashboard/ sub-app."
+      },
+      {
+        "vercel_name": "levrage-zambia-bridge",
+        "production_urls": [
+          "https://levrage-zambia-bridge.vercel.app"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "levrage-zambia-bridge",
+          "branch": "main",
+          "last_deploy": "2025-10-03"
+        },
+        "manifest_id": "zambia-bridge",
+        "local_path": "D:\\Projects\\zambia-bridge",
+        "tier": 2,
+        "notes": "Local folder has no .git; Vercel is source of truth for deploy. Stale since Oct 2025."
+      },
+      {
+        "vercel_name": "levrage-zambia-bridge-xp3u",
+        "production_urls": [
+          "https://levrage-zambia-bridge-xp3u.vercel.app"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "levrage-zambia-bridge",
+          "branch": "main",
+          "last_deploy": "2025-10-03"
+        },
+        "manifest_id": "zambia-bridge",
+        "local_path": "D:\\Projects\\zambia-bridge",
+        "tier": 2,
+        "duplicate_of": "levrage-zambia-bridge",
+        "notes": "Preview/duplicate deployment of same repo. Candidate for deletion after confirming traffic."
+      },
+      {
+        "vercel_name": "link360",
+        "production_urls": [
+          "https://link360.vercel.app"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "Link360",
+          "branch": "main",
+          "last_deploy": "2026-03-07"
+        },
+        "manifest_id": "link360",
+        "local_path": "D:\\Projects\\link360",
+        "tier": 4
+      },
+      {
+        "vercel_name": "levrage-strategy",
+        "production_urls": [
+          "https://www.levragesolutions.com"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "levrage-strategy",
+          "branch": "main",
+          "last_deploy": "2026-01-02"
+        },
+        "manifest_id": "levrage-solutions",
+        "local_path": "D:\\Projects\\LevrAge-Solutions",
+        "tier": 3,
+        "notes": "Custom domain www.levragesolutions.com. Local folder LevrAge-Solutions; package.json name leverage-platform."
+      },
+      {
+        "vercel_name": "lobstar-platform",
+        "production_urls": [
+          "https://lobstar-platform.vercel.app"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "lobstar-platform",
+          "branch": "main",
+          "last_deploy": "2026-01-27"
+        },
+        "manifest_id": "lobito-platform",
+        "local_path": "D:\\Projects\\lobito-platform",
+        "tier": 2,
+        "notes": "Local folder lobito-platform vs repo lobstar-platform."
+      },
+      {
+        "vercel_name": "zambia-untold",
+        "production_urls": [
+          "https://zambia-untold.vercel.app"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "Zambia-Untold",
+          "branch": "main",
+          "last_deploy": "2026-04-12"
+        },
+        "manifest_id": "zambia-untold",
+        "local_path": "D:\\Projects\\zambia-untold",
+        "tier": 2
+      },
+      {
+        "vercel_name": "zanc-site",
+        "production_urls": [
+          "https://www.zancsac.com"
+        ],
+        "github": {
+          "org": "zanc-california",
+          "repo": "zanc-site",
+          "branch": "main",
+          "last_deploy": "2026-04-19"
+        },
+        "manifest_id": "zanc-site",
+        "local_path": "D:\\Projects\\ZANC-site",
+        "tier": 2,
+        "notes": "Only non-Mabspro org deployment in list."
+      },
+      {
+        "vercel_name": "alpha01",
+        "production_urls": [
+          "https://alpha01.vercel.app"
+        ],
+        "github": {
+          "org": "LevrAge-LLC",
+          "repo": "alpha01",
+          "branch": "main",
+          "last_deploy": "2026-02-17"
+        },
+        "manifest_id": "alpha01",
+        "local_path": "D:\\Projects\\Alpha01",
+        "tier": 3
+      },
+      {
+        "vercel_name": "april-trip",
+        "production_urls": [
+          "https://april-trip-gamma.vercel.app"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "April-Trip",
+          "branch": "main",
+          "last_deploy": "2026-03-29"
+        },
+        "manifest_id": "quick-projects-april-trip",
+        "local_path": "D:\\Projects\\quick-projects\\April-Trip",
+        "tier": 6,
+        "notes": "Repo on GitHub; local nested under quick-projects/ without .git."
+      },
+      {
+        "vercel_name": "coppercloud-ai",
+        "production_urls": [
+          "https://coppercloud.ai"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "CopperCloud.ai",
+          "branch": "main",
+          "last_deploy": "2026-03-26"
+        },
+        "manifest_id": "coppercloud-ai",
+        "local_path": "D:\\Projects\\coppercloud.ai",
+        "tier": 1,
+        "notes": "Custom domain deployment."
+      },
+      {
+        "vercel_name": "copper-cloud-ai",
+        "production_urls": [
+          "https://copper-cloud-ai.vercel.app"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "CopperCloud.ai",
+          "branch": "main",
+          "last_deploy": "2026-03-26"
+        },
+        "manifest_id": "coppercloud-ai",
+        "local_path": "D:\\Projects\\coppercloud.ai",
+        "tier": 1,
+        "duplicate_of": "coppercloud-ai",
+        "notes": "Second Vercel project wired to same GitHub repo. Consolidate to coppercloud-ai + coppercloud.ai domain."
+      },
+      {
+        "vercel_name": "levrage-studio",
+        "production_urls": [
+          "https://levrage-studio.vercel.app"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "levrage-studio",
+          "branch": "main",
+          "last_deploy": "2025-12-30"
+        },
+        "manifest_id": "levrage-studios",
+        "local_path": "D:\\Projects\\levrage-studios",
+        "tier": 3,
+        "notes": "Repo levrage-studio vs local folder levrage-studios. Local has no git."
+      },
+      {
+        "vercel_name": "read-lens",
+        "production_urls": [
+          "https://read-lens.com"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "read-lens",
+          "branch": "main",
+          "last_deploy": "2026-03-08"
+        },
+        "manifest_id": "read-lens",
+        "local_path": "D:\\Projects\\read-lens",
+        "tier": 5
+      },
+      {
+        "vercel_name": "leverage-prod",
+        "production_urls": [
+          "https://www.levrage.app"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "leverage",
+          "branch": "main",
+          "last_deploy": "2025-12-31",
+          "deployment_count": 96
+        },
+        "manifest_id": "network-manager",
+        "local_path": "D:\\Projects\\network-manager",
+        "tier": 3,
+        "mapping_confidence": "medium",
+        "notes": "Manifest listed network-manager at levrage.app with shared projectId to lobstar — Vercel shows repo Mabspro/leverage not network-manager. Reconcile local folder vs leverage repo."
+      },
+      {
+        "vercel_name": "the-wealth-shift",
+        "production_urls": [
+          "https://thewealthsshift.com"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "The_Walth_Shift",
+          "branch": "master",
+          "last_deploy": "2025-12-14"
+        },
+        "manifest_id": "the-wealth-shift",
+        "local_path": "D:\\Projects\\the_wealth_shift",
+        "tier": 4,
+        "notes": "GitHub repo typo The_Walth_Shift vs folder the_wealth_shift."
+      },
+      {
+        "vercel_name": "copper-cloud-ssot",
+        "production_urls": [
+          "https://copper-cloud-ssot.vercel.app"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "CopperCloud-ssot",
+          "branch": "sprint/slice-a-sealed",
+          "last_deploy": "2026-01-31"
+        },
+        "manifest_id": "coppercloud-ssot",
+        "local_path": "D:\\Projects\\coppercloud-ssot",
+        "tier": 1,
+        "notes": "Deploy branch sprint/slice-a-sealed not main. Matches layout.tsx reference to coppercloud-ssot.vercel.app."
+      },
+      {
+        "vercel_name": "pbs",
+        "production_urls": [
+          "https://pbs-three.vercel.app"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "PBS",
+          "branch": "main",
+          "last_deploy": "2025-12-30"
+        },
+        "manifest_id": "pbs",
+        "local_path": "D:\\Projects\\PBS",
+        "tier": 6,
+        "notes": "Manifest previously classified PBS as docs-only asset; Vercel shows live Next.js site on GitHub Mabspro/PBS."
+      },
+      {
+        "vercel_name": "refridge-x",
+        "production_urls": [
+          "https://refridge-x.vercel.app"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "RefridgeX",
+          "branch": "main",
+          "last_deploy": "2025-07-14"
+        },
+        "manifest_id": "refridgex",
+        "local_path": "D:\\Projects\\refridgex\\refridgex",
+        "tier": 4,
+        "notes": "Vercel hyphenated name vs folder refridgex."
+      },
+      {
+        "vercel_name": "edc",
+        "production_urls": [
+          "https://edc-xi.vercel.app"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "EDC",
+          "branch": "main",
+          "last_deploy": "2025-12-14"
+        },
+        "manifest_id": "edc-consulting",
+        "local_path": "D:\\Projects\\EDC-Consulting",
+        "tier": 5,
+        "notes": "Repo EDC vs folder EDC-Consulting. Local has no git."
+      },
+      {
+        "vercel_name": "housing-dashboard",
+        "production_urls": [
+          "https://housing-dashboard-six.vercel.app"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "housing_project",
+          "branch": "main",
+          "last_deploy": "2025-01-10"
+        },
+        "manifest_id": "housing-project",
+        "local_path": null,
+        "tier": 5,
+        "notes": "Mabspro/housing_project — GitHub only, no D:\\Projects clone. Not master-scraper."
+      },
+      {
+        "vercel_name": "afriai-io",
+        "production_urls": [
+          "https://www.afriai.io"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "Afriai.io",
+          "branch": "main",
+          "last_deploy": "2025-12-26"
+        },
+        "manifest_id": "afriai-io",
+        "local_path": "D:\\Projects\\afriai.io",
+        "tier": 4,
+        "notes": "Custom domain. Local folder has no .git."
+      },
+      {
+        "vercel_name": "zambia-roadshow-2025",
+        "production_urls": [
+          "https://zambiaroadshow.org"
+        ],
+        "github": {
+          "org": "Mabspro",
+          "repo": "zambia-roadshow-2025",
+          "branch": "main",
+          "last_deploy": "2025-08-30"
+        },
+        "manifest_id": "zambia-roadshow-2025",
+        "local_path": "D:\\Projects\\zambia-roadshow-2025",
+        "tier": 2,
+        "notes": "Custom domain zambiaroadshow.org. Local has no .git."
+      },
+      {
+        "vercel_name": "dashboard",
+        "production_urls": [
+          "https://dashboard-five-azure-78.vercel.app"
+        ],
+        "github": null,
+        "git_connected": false,
+        "manifest_id": null,
+        "local_path": null,
+        "last_deploy": "2026-05-04",
+        "mapping_confidence": "low",
+        "notes": "ORPHAN — no Git repo connected. Possibly rise-data-pipeline or coppercloud dashboard experiment. Investigate before delete."
+      },
+      {
+        "vercel_name": "coppercloud-audit-fallback-day10",
+        "production_urls": [
+          "https://coppercloud-audit-fallback-day10.vercel.app"
+        ],
+        "github": null,
+        "git_connected": false,
+        "manifest_id": null,
+        "local_path": null,
+        "last_deploy": "2026-05-03",
+        "notes": "ORPHAN — likely Sprint 0 audit fallback deploy from coppercloud-orchestrator. Connect to orchestrator repo or archive."
+      },
+      {
+        "vercel_name": "workspace",
+        "production_urls": [
+          "https://workspace-eta-vert-74.vercel.app"
+        ],
+        "github": null,
+        "git_connected": false,
+        "manifest_id": null,
+        "local_path": null,
+        "last_deploy": "2026-02-07",
+        "notes": "ORPHAN — generic name, no git. Unknown purpose."
+      }
+    ],
+    "by_manifest_id": {
+      "coppercloud-orchestrator": [
+        "coppercloud-orchestrator"
+      ],
+      "signals-zambia-ai": [
+        "signals-zambia"
+      ],
+      "rise-data-pipeline": [
+        "rise-data-dashboard"
+      ],
+      "zambia-bridge": [
+        "levrage-zambia-bridge",
+        "levrage-zambia-bridge-xp3u"
+      ],
+      "link360": [
+        "link360"
+      ],
+      "levrage-solutions": [
+        "levrage-strategy"
+      ],
+      "lobito-platform": [
+        "lobstar-platform"
+      ],
+      "zambia-untold": [
+        "zambia-untold"
+      ],
+      "zanc-site": [
+        "zanc-site"
+      ],
+      "alpha01": [
+        "alpha01"
+      ],
+      "quick-projects-april-trip": [
+        "april-trip"
+      ],
+      "coppercloud-ai": [
+        "coppercloud-ai",
+        "copper-cloud-ai"
+      ],
+      "levrage-studios": [
+        "levrage-studio"
+      ],
+      "read-lens": [
+        "read-lens"
+      ],
+      "network-manager": [
+        "leverage-prod"
+      ],
+      "the-wealth-shift": [
+        "the-wealth-shift"
+      ],
+      "coppercloud-ssot": [
+        "copper-cloud-ssot"
+      ],
+      "pbs": [
+        "pbs"
+      ],
+      "refridgex": [
+        "refridge-x"
+      ],
+      "edc-consulting": [
+        "edc"
+      ],
+      "housing-project": [
+        "housing-dashboard"
+      ],
+      "master-scraper": [],
+      "afriai-io": [
+        "afriai-io"
+      ],
+      "zambia-roadshow-2025": [
+        "zambia-roadshow-2025"
+      ]
+    },
+    "planned_actions_not_implemented": [
+      {
+        "priority": "P0",
+        "action": "Reconnect git for orphans: dashboard, coppercloud-audit-fallback-day10, workspace — or delete if unused",
+        "risk": "Deployed code with no version control"
+      },
+      {
+        "priority": "P1",
+        "action": "Delete or disable duplicate Vercel projects: copper-cloud-ai (keep coppercloud-ai), levrage-zambia-bridge-xp3u",
+        "risk": "Split env vars and confused deploy targets"
+      },
+      {
+        "priority": "P1",
+        "action": "Clone/pull GitHub repos for local folders missing .git: zambia-bridge, afriai.io, pantry, zambia-roadshow-2025, levrage-studios, EDC-Consulting",
+        "risk": "Machine-loss; Vercel is ahead of local"
+      },
+      {
+        "priority": "P2",
+        "action": "Confirm leverage-prod (Mabspro/leverage) vs network-manager local folder — may need git remote retarget",
+        "risk": "Wrong codebase deployed to www.levrage.app"
+      },
+      {
+        "priority": "P2",
+        "action": "Confirm housing-dashboard (housing_project) vs master-scraper local",
+        "risk": "Mislinked manifest tier-5 entry"
+      },
+      {
+        "priority": "P2",
+        "action": "Update manifest vercel blocks per project with production_urls and git branch from this map",
+        "risk": "Stale manifest"
+      },
+      {
+        "priority": "P3",
+        "action": "Promote rise-data-dashboard deploy branch cleanup/repo-structure → main or document why not",
+        "risk": "Production not on main"
+      },
+      {
+        "priority": "P3",
+        "action": "Reclassify PBS manifest entry from asset-only to active site if Mabspro/PBS is canonical",
+        "risk": "Agents skip PBS as non-code"
+      }
+    ]
+  },
+  "vercel_registry": {
+    "last_updated": "2026-05-18",
+    "source": "Vercel dashboard — manual reconciliation",
+    "projects": [
+      {
+        "vercel_name": "coppercloud-orchestrator",
+        "url": "https://coppercloud-orchestrator.vercel.app",
+        "github": "Mabspro/coppercloud-orchestrator",
+        "local": "coppercloud-orchestrator"
+      },
+      {
+        "vercel_name": "signals-zambia",
+        "url": "https://signals-zambia.vercel.app",
+        "github": "Mabspro/signals.zambia",
+        "local": "signals.zambia.ai"
+      },
+      {
+        "vercel_name": "rise-data-dashboard",
+        "url": "https://rise-data-dashboard.vercel.app",
+        "github": "Mabspro/rise-data-pipeline",
+        "local": "rise-data-pipeline"
+      },
+      {
+        "vercel_name": "levrage-zambia-bridge",
+        "url": "https://levrage-zambia-bridge.vercel.app",
+        "github": "Mabspro/levrage-zambia-bridge",
+        "local": "zambia-bridge"
+      },
+      {
+        "vercel_name": "zambia-untold",
+        "url": "https://zambia-untold.vercel.app",
+        "github": "Mabspro/Zambia-Untold",
+        "local": "zambia-untold"
+      },
+      {
+        "vercel_name": "zanc-site",
+        "url": "https://www.zancsac.com",
+        "github": "zanc-california/zanc-site",
+        "local": "ZANC-site"
+      },
+      {
+        "vercel_name": "lobstar-platform",
+        "url": "https://lobstar-platform.vercel.app",
+        "github": "Mabspro/lobstar-platform",
+        "local": "lobito-platform"
+      },
+      {
+        "vercel_name": "levrage-strategy",
+        "url": "https://www.levragesolutions.com",
+        "github": "Mabspro/levrage-strategy",
+        "local": "LevrAge-Solutions"
+      },
+      {
+        "vercel_name": "levrage-studio",
+        "url": "https://levrage-studio.vercel.app",
+        "github": "Mabspro/levrage-studio",
+        "local": "levrage-studios",
+        "note": "Local folder name has extra 's'"
+      },
+      {
+        "vercel_name": "leverage-prod",
+        "url": "https://www.levrage.app",
+        "github": "Mabspro/leverage",
+        "local": "network-manager",
+        "note": "Local folder name differs from repo name"
+      },
+      {
+        "vercel_name": "alpha01",
+        "url": "https://alpha01.vercel.app",
+        "github": "LevrAge-LLC/alpha01",
+        "local": "Alpha01"
+      },
+      {
+        "vercel_name": "coppercloud-ai",
+        "url": "https://coppercloud.ai",
+        "github": "Mabspro/CopperCloud.ai",
+        "local": "coppercloud.ai"
+      },
+      {
+        "vercel_name": "copper-cloud-ssot",
+        "url": "https://copper-cloud-ssot.vercel.app",
+        "github": "Mabspro/CopperCloud-ssot",
+        "local": "coppercloud-ssot",
+        "note": "Deployed from sprint/slice-a-sealed, not main"
+      },
+      {
+        "vercel_name": "link360",
+        "url": "https://link360.vercel.app",
+        "github": "Mabspro/Link360",
+        "local": "link360"
+      },
+      {
+        "vercel_name": "afriai-io",
+        "url": "https://www.afriai.io",
+        "github": "Mabspro/Afriai.io",
+        "local": "afriai.io"
+      },
+      {
+        "vercel_name": "zambia-roadshow-2025",
+        "url": "https://zambiaroadshow.org",
+        "github": "Mabspro/zambia-roadshow-2025",
+        "local": "zambia-roadshow-2025"
+      },
+      {
+        "vercel_name": "the-wealth-shift",
+        "url": "https://thewealthsshift.com",
+        "github": "Mabspro/The_Walth_Shift",
+        "local": "the_wealth_shift",
+        "note": "Typo in GitHub repo: The_Walth_Shift. Deployed from master."
+      },
+      {
+        "vercel_name": "pbs",
+        "url": "https://pbs-three.vercel.app",
+        "github": "Mabspro/PBS",
+        "local": "PBS"
+      },
+      {
+        "vercel_name": "edc",
+        "url": "https://edc-xi.vercel.app",
+        "github": "Mabspro/EDC",
+        "local": "EDC-Consulting",
+        "note": "Local folder: EDC-Consulting. Repo: EDC."
+      },
+      {
+        "vercel_name": "read-lens",
+        "url": "https://read-lens.com",
+        "github": "Mabspro/read-lens",
+        "local": "read-lens"
+      },
+      {
+        "vercel_name": "april-trip",
+        "url": "https://april-trip-gamma.vercel.app",
+        "github": "Mabspro/April-Trip",
+        "local": "quick-projects/April-Trip"
+      },
+      {
+        "vercel_name": "refridge-x",
+        "url": "https://refridge-x.vercel.app",
+        "github": "Mabspro/RefridgeX",
+        "local": "DELETED — no longer needed"
+      },
+      {
+        "vercel_name": "housing-dashboard",
+        "url": "https://housing-dashboard-six.vercel.app",
+        "github": "Mabspro/housing_project",
+        "local": "NOT IN D:\\Projects — repo exists on GitHub only"
+      }
+    ],
+    "unlinked_vercel_projects": [
+      {
+        "vercel_name": "dashboard",
+        "url": "https://dashboard-five-azure-78.vercel.app",
+        "note": "No GitHub repo connected. Likely idream-crm or a sprint debug deploy."
+      },
+      {
+        "vercel_name": "workspace",
+        "url": "https://workspace-eta-vert-74.vercel.app",
+        "note": "No GitHub repo connected. Unknown."
+      },
+      {
+        "vercel_name": "coppercloud-audit-fallback-day10",
+        "url": "https://coppercloud-audit-fallback-day10.vercel.app",
+        "note": "Sprint debug deploy. Safe to delete from Vercel."
+      }
+    ],
+    "duplicate_vercel_projects": [
+      {
+        "keep": "coppercloud-ai",
+        "delete": "copper-cloud-ai",
+        "github": "Mabspro/CopperCloud.ai",
+        "action": "Delete copper-cloud-ai from Vercel dashboard"
+      },
+      {
+        "keep": "levrage-zambia-bridge",
+        "delete": "levrage-zambia-bridge-xp3u",
+        "github": "Mabspro/levrage-zambia-bridge",
+        "action": "Delete levrage-zambia-bridge-xp3u from Vercel dashboard"
+      }
+    ],
+    "missing_local_clone": [
+      {
+        "github": "Mabspro/housing_project",
+        "vercel": "housing-dashboard",
+        "action": "Clone to D:\\Projects\\housing-project if still needed"
+      }
+    ]
+  }
+}
