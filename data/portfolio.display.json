@@ -1,0 +1,110 @@
+{
+  "_comment": "Presentation-only fields merged with portfolio.public.json at build time. Not exported from manifest.",
+  "rise-data-pipeline": {
+    "displayName": "RISE Evidence Engine",
+    "headline": "Zambia-first development evidence infrastructure",
+    "bullets": [
+      "FastAPI ingest + Vite/React dashboard with district-level artifacts, CDF-aware views, and audit-grade provenance.",
+      "CopperCloud receipt integration for collector runs — fully built, live dashboard on Vercel.",
+      "Built for institutional partners and field validation workflows, not a client marketing site."
+    ],
+    "linkLabel": "Live dashboard at rise-data-dashboard.vercel.app"
+  },
+  "coppercloud-orchestrator": {
+    "headline": "Proof-carrying sovereign compute",
+    "bullets": [
+      "Ed25519-signed receipts, hash-chained audit trail, capability-aware workload routing.",
+      "Live coordination layer for attestation, node management, and institutional trust primitives."
+    ],
+    "linkLabel": "CopperCloud orchestrator (live)"
+  },
+  "signals-zambia-ai": {
+    "headline": "Zambia macro & power-stress intelligence",
+    "bullets": [
+      "Public-data ingest: BoZ FX, ZESCO, rainfall, LME copper — daily ATTESTED receipts to CopperCloud.",
+      "Staleness gates and regime signals built for sovereign infrastructure, not generic dashboards."
+    ],
+    "linkLabel": "signals.zambia.ai"
+  },
+  "network-manager": {
+    "logo": "/images/logos/LevrAge.png",
+    "headline": "Network intelligence for serious operators.",
+    "bullets": [
+      "Multi-tenant SaaS-style architecture with secure auth and data separation.",
+      "Contact graph, tagging, and search with AI-assisted enrichment and insights."
+    ],
+    "linkLabel": "Live flagship SaaS MVP at levrage.app"
+  },
+  "coppercloud-ai": {
+    "logo": "/images/logos/CopperCoud-logo.png",
+    "headline": "AI + data infrastructure for operational teams.",
+    "bullets": [
+      "Core data and infra patterns to support AI-augmented workflows.",
+      "Deployment setup that can evolve into client-specific solutions."
+    ],
+    "linkLabel": "Active studio venture and template for AI/infra MVPs"
+  },
+  "healyri": {
+    "logo": "/images/logos/healyri_logo.png",
+    "headline": "Community emergency mobilizer",
+    "bullets": [
+      "Event-driven flow to request help and notify vetted drivers.",
+      "Location and destination logic oriented around local hospitals and services."
+    ],
+    "linkLabel": "Lab-grade concept exploring emergency infrastructure patterns"
+  },
+  "the-wealth-shift": {
+    "problem": "A wealth and finance brand needed a clear online presence that could educate and convert without a complex app.",
+    "solution": "Brand and funnel site that explains the offer, captures leads, and guides visitors into the right next step.",
+    "bullets": [
+      "Conversion-oriented marketing site with clear narrative and CTAs.",
+      "Lightweight infrastructure that can later plug into more advanced tools."
+    ]
+  },
+  "alpha01": {
+    "displayName": "Alpha01 (telehealth MVP)",
+    "problem": "A health organization needed a secure way to deliver telehealth services and manage patient interactions in a specific regional context.",
+    "solution": "Specialized telehealth MVP with secure access, visit flows, and provider–patient communication primitives.",
+    "bullets": [
+      "Auth and role-based access for patients and providers.",
+      "Telehealth-ready flows that can be extended into full EHR or integrations."
+    ]
+  },
+  "pbs": {
+    "displayName": "PBS (Phoenix Bookkeeping)",
+    "problem": "A bookkeeping firm needed a simple, credible web presence and light operational tooling.",
+    "solution": "Small business MVP that communicates services and supports basic client workflows.",
+    "bullets": [
+      "Service site with structured information architecture.",
+      "Simple flows that can evolve into client onboarding or portals."
+    ],
+    "linkLabel": "View site"
+  },
+  "edc-consulting": {
+    "displayName": "EDC Consulting",
+    "problem": "A consulting practice needed a credible bilingual web presence with clear service positioning.",
+    "solution": "Marketing site with dynamic placeholders and share-ready Open Graph metadata.",
+    "bullets": [
+      "Bilingual content structure for English and French audiences.",
+      "Lightweight deployment suitable for ongoing content updates."
+    ],
+    "linkLabel": "View site"
+  },
+  "afriai-io": {
+    "displayName": "Afriai"
+  },
+  "refridgex": {
+    "displayName": "RefridgeX"
+  },
+  "pantry": {
+    "displayName": "Pantry"
+  },
+  "zanc-site": {
+    "headline": "Association of Zambians in California",
+    "bullets": [
+      "Community events, membership, and payments for ZANC.",
+      "Maintained as a live community platform — separate from client MVP work."
+    ],
+    "linkLabel": "Visit zancsac.com"
+  }
+}

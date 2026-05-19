@@ -1,0 +1,347 @@
+{
+  "generated": "2026-05-19T16:38:54.494Z",
+  "manifest_path": "C:\\Users\\mabsp\\.openclaw\\workspace\\PORTFOLIO_MANIFEST.json",
+  "schema": "id, name, url, blurb, section, status, sort",
+  "filter_note": "studio_public.export + studio_public.section on each manifest project.",
+  "count": 18,
+  "items": [
+    {
+      "id": "rise-data-pipeline",
+      "name": "RISE Data Pipeline",
+      "url": "https://rise-data-dashboard.vercel.app",
+      "blurb": "Zambia-first evidence infrastructure. Development decisions that can be traced, trusted, and improved. Phase 2 in progress.",
+      "section": "institutional",
+      "status": "live",
+      "sort": 1
+    },
+    {
+      "id": "coppercloud-orchestrator",
+      "name": "CopperCloud Orchestrator",
+      "url": "https://coppercloud-orchestrator.vercel.app",
+      "blurb": "Proof-carrying workload coordination platform. Routing, attestation, receipt generation, node management, audit chain.",
+      "section": "platform",
+      "status": "live",
+      "sort": 99
+    },
+    {
+      "id": "coppercloud-ai",
+      "name": "CopperCloud.ai",
+      "url": "https://coppercloud.ai",
+      "blurb": "Marketing and positioning surface. Zambia's digital sovereignty standards authority framing.",
+      "section": "flagships",
+      "status": "live",
+      "sort": 99
+    },
+    {
+      "id": "signals-zambia-ai",
+      "name": "signals.zambia.ai",
+      "url": "https://signals-zambia.vercel.app",
+      "blurb": "Public-data sovereign intelligence: power-stress and macro-regime monitoring for Zambia. Emits CopperCloud ATTESTED receipts daily.",
+      "section": "platform",
+      "status": "live",
+      "sort": 99
+    },
+    {
+      "id": "zanc-site",
+      "name": "ZANC Site",
+      "url": "https://www.zancsac.com",
+      "blurb": "Content site with payments for Association of Zambians in California.",
+      "section": "community",
+      "status": "live",
+      "sort": 99
+    },
+    {
+      "id": "levrage-solutions",
+      "name": "LevrAge Solutions",
+      "url": "https://www.levragesolutions.com",
+      "blurb": "Innovation and economic diplomacy platform.",
+      "section": "flagships",
+      "status": "live",
+      "sort": 99
+    },
+    {
+      "id": "network-manager",
+      "name": "Network Manager",
+      "url": "https://www.levrage.app",
+      "blurb": "Post-LinkedIn networking platform powered by RAG and degrees-of-separation intelligence.",
+      "section": "flagships",
+      "status": "live",
+      "sort": 99
+    },
+    {
+      "id": "alpha01",
+      "name": "Alpha01 Medical Consultants",
+      "url": "https://alpha01.vercel.app",
+      "blurb": "Medical consultants telemedicine platform.",
+      "section": "client_mvps",
+      "status": "live",
+      "sort": 99
+    },
+    {
+      "id": "pantry",
+      "name": "Pantry",
+      "url": null,
+      "blurb": "Grocery run assistant. Reduces cognitive load, captures and organizes grocery lists.",
+      "section": "labs",
+      "status": "experiment",
+      "sort": 99
+    },
+    {
+      "id": "afriai-io",
+      "name": "AfriAI.io",
+      "url": "https://www.afriai.io",
+      "blurb": "Africa's pre-startup intelligence hub.",
+      "section": "labs",
+      "status": "experiment",
+      "sort": 99
+    },
+    {
+      "id": "link360",
+      "name": "Link360",
+      "url": "https://link360.vercel.app",
+      "blurb": "MVP web app to collect shipping interest and display container completion thermometer.",
+      "section": "labs",
+      "status": "experiment",
+      "sort": 99
+    },
+    {
+      "id": "healyri",
+      "name": "Healyri",
+      "url": null,
+      "blurb": "Health application. Mobile-first.",
+      "section": "flagships",
+      "status": "live",
+      "sort": 99
+    },
+    {
+      "id": "edc-consulting",
+      "name": "EDC Consulting",
+      "url": "https://edc-xi.vercel.app",
+      "blurb": "Website for Excellence Data Consulting LLC, led by Dr. Komi Modji. Live on Vercel; no active dev obligation.",
+      "section": "client_mvps",
+      "status": "selected",
+      "sort": 99
+    },
+    {
+      "id": "pbs",
+      "name": "PBS",
+      "url": "https://pbs-three.vercel.app",
+      "blurb": "Client site live on Vercel. Local PBS folder may hold docs; canonical app is Mabspro/PBS on GitHub.",
+      "section": "client_mvps",
+      "status": "selected",
+      "sort": 99
+    },
+    {
+      "id": "tenat",
+      "name": "Tenat — Property Management",
+      "url": null,
+      "blurb": "PHP property management system. Landlord, tenant, and worker dashboards. Fault reporting, maintenance tracking, real-time messaging.",
+      "section": "labs",
+      "status": "experiment",
+      "sort": 99
+    },
+    {
+      "id": "chalospace",
+      "name": "ChaloSpace — Property Management (v1)",
+      "url": null,
+      "blurb": "Original version of tenat. PHP property management. Last touched Jan 2025.",
+      "section": "labs",
+      "status": "experiment",
+      "sort": 99
+    },
+    {
+      "id": "the-wealth-shift",
+      "name": "The Wealth Shift",
+      "url": "https://thewealthsshift.com",
+      "blurb": "Finance/wealth platform. Live domain; dormant dev. Next.js + Supabase + Sanity CMS.",
+      "section": "client_mvps",
+      "status": "selected",
+      "sort": 99
+    },
+    {
+      "id": "refridgex",
+      "name": "RefridgeX",
+      "url": "https://refridge-x.vercel.app",
+      "blurb": "Commercial refrigeration inventory and quote site for MC Store Fixtures. Scaffolding — not active client obligation.",
+      "section": "labs",
+      "status": "experiment",
+      "sort": 99
+    }
+  ],
+  "bySection": {
+    "platform": [
+      {
+        "id": "coppercloud-orchestrator",
+        "name": "CopperCloud Orchestrator",
+        "url": "https://coppercloud-orchestrator.vercel.app",
+        "blurb": "Proof-carrying workload coordination platform. Routing, attestation, receipt generation, node management, audit chain.",
+        "section": "platform",
+        "status": "live",
+        "sort": 99
+      },
+      {
+        "id": "signals-zambia-ai",
+        "name": "signals.zambia.ai",
+        "url": "https://signals-zambia.vercel.app",
+        "blurb": "Public-data sovereign intelligence: power-stress and macro-regime monitoring for Zambia. Emits CopperCloud ATTESTED receipts daily.",
+        "section": "platform",
+        "status": "live",
+        "sort": 99
+      }
+    ],
+    "institutional": [
+      {
+        "id": "rise-data-pipeline",
+        "name": "RISE Data Pipeline",
+        "url": "https://rise-data-dashboard.vercel.app",
+        "blurb": "Zambia-first evidence infrastructure. Development decisions that can be traced, trusted, and improved. Phase 2 in progress.",
+        "section": "institutional",
+        "status": "live",
+        "sort": 1
+      }
+    ],
+    "flagships": [
+      {
+        "id": "coppercloud-ai",
+        "name": "CopperCloud.ai",
+        "url": "https://coppercloud.ai",
+        "blurb": "Marketing and positioning surface. Zambia's digital sovereignty standards authority framing.",
+        "section": "flagships",
+        "status": "live",
+        "sort": 99
+      },
+      {
+        "id": "levrage-solutions",
+        "name": "LevrAge Solutions",
+        "url": "https://www.levragesolutions.com",
+        "blurb": "Innovation and economic diplomacy platform.",
+        "section": "flagships",
+        "status": "live",
+        "sort": 99
+      },
+      {
+        "id": "network-manager",
+        "name": "Network Manager",
+        "url": "https://www.levrage.app",
+        "blurb": "Post-LinkedIn networking platform powered by RAG and degrees-of-separation intelligence.",
+        "section": "flagships",
+        "status": "live",
+        "sort": 99
+      },
+      {
+        "id": "healyri",
+        "name": "Healyri",
+        "url": null,
+        "blurb": "Health application. Mobile-first.",
+        "section": "flagships",
+        "status": "live",
+        "sort": 99
+      }
+    ],
+    "client_mvps": [
+      {
+        "id": "alpha01",
+        "name": "Alpha01 Medical Consultants",
+        "url": "https://alpha01.vercel.app",
+        "blurb": "Medical consultants telemedicine platform.",
+        "section": "client_mvps",
+        "status": "live",
+        "sort": 99
+      },
+      {
+        "id": "edc-consulting",
+        "name": "EDC Consulting",
+        "url": "https://edc-xi.vercel.app",
+        "blurb": "Website for Excellence Data Consulting LLC, led by Dr. Komi Modji. Live on Vercel; no active dev obligation.",
+        "section": "client_mvps",
+        "status": "selected",
+        "sort": 99
+      },
+      {
+        "id": "pbs",
+        "name": "PBS",
+        "url": "https://pbs-three.vercel.app",
+        "blurb": "Client site live on Vercel. Local PBS folder may hold docs; canonical app is Mabspro/PBS on GitHub.",
+        "section": "client_mvps",
+        "status": "selected",
+        "sort": 99
+      },
+      {
+        "id": "the-wealth-shift",
+        "name": "The Wealth Shift",
+        "url": "https://thewealthsshift.com",
+        "blurb": "Finance/wealth platform. Live domain; dormant dev. Next.js + Supabase + Sanity CMS.",
+        "section": "client_mvps",
+        "status": "selected",
+        "sort": 99
+      }
+    ],
+    "labs": [
+      {
+        "id": "pantry",
+        "name": "Pantry",
+        "url": null,
+        "blurb": "Grocery run assistant. Reduces cognitive load, captures and organizes grocery lists.",
+        "section": "labs",
+        "status": "experiment",
+        "sort": 99
+      },
+      {
+        "id": "afriai-io",
+        "name": "AfriAI.io",
+        "url": "https://www.afriai.io",
+        "blurb": "Africa's pre-startup intelligence hub.",
+        "section": "labs",
+        "status": "experiment",
+        "sort": 99
+      },
+      {
+        "id": "link360",
+        "name": "Link360",
+        "url": "https://link360.vercel.app",
+        "blurb": "MVP web app to collect shipping interest and display container completion thermometer.",
+        "section": "labs",
+        "status": "experiment",
+        "sort": 99
+      },
+      {
+        "id": "tenat",
+        "name": "Tenat — Property Management",
+        "url": null,
+        "blurb": "PHP property management system. Landlord, tenant, and worker dashboards. Fault reporting, maintenance tracking, real-time messaging.",
+        "section": "labs",
+        "status": "experiment",
+        "sort": 99
+      },
+      {
+        "id": "chalospace",
+        "name": "ChaloSpace — Property Management (v1)",
+        "url": null,
+        "blurb": "Original version of tenat. PHP property management. Last touched Jan 2025.",
+        "section": "labs",
+        "status": "experiment",
+        "sort": 99
+      },
+      {
+        "id": "refridgex",
+        "name": "RefridgeX",
+        "url": "https://refridge-x.vercel.app",
+        "blurb": "Commercial refrigeration inventory and quote site for MC Store Fixtures. Scaffolding — not active client obligation.",
+        "section": "labs",
+        "status": "experiment",
+        "sort": 99
+      }
+    ],
+    "community": [
+      {
+        "id": "zanc-site",
+        "name": "ZANC Site",
+        "url": "https://www.zancsac.com",
+        "blurb": "Content site with payments for Association of Zambians in California.",
+        "section": "community",
+        "status": "live",
+        "sort": 99
+      }
+    ]
+  }
+}
