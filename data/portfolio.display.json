@@ -122,21 +122,44 @@
     ],
     "linkLabel": "View site"
   },
+  "zanc-site": {
+    "displayName": "ZANC California",
+    "headline": "Association of Zambians in California",
+    "blurb": "Built and deployed for the ZANC community — events, membership, and payments on a site the association owns and runs day to day.",
+    "bullets": [
+      "Vite + React + Supabase: content, dues, and community workflows.",
+      "Live and maintained — not a client MVP or experiment."
+    ],
+    "linkLabel": "zancsac.com"
+  },
+  "link360": {
+    "displayName": "Link360 Shipping",
+    "headline": "NorCal → Zambia community shipping pools",
+    "blurb": "Studio-built MVP for Operation iDream — pledge container space, watch fill levels hit goal, ship when the community threshold is reached.",
+    "bullets": [
+      "Pledge-first model: no payment until the pool is confirmed and announced.",
+      "Live on Vercel with container thermometer, pricing, and admin flows."
+    ],
+    "linkLabel": "link360.vercel.app"
+  },
   "afriai-io": {
-    "displayName": "Afriai"
+    "displayName": "Afriai",
+    "blurb": "Early concept at the intersection of African markets and AI infrastructure — pattern tests, not a maintained product."
   },
   "refridgex": {
-    "displayName": "RefridgeX"
+    "displayName": "RefridgeX",
+    "blurb": "Cold-chain and inventory experiment — client scaffolding that did not move into active delivery."
   },
   "pantry": {
-    "displayName": "Pantry"
+    "displayName": "Pantry",
+    "blurb": "Shopping assistant concept for busy parents — voice, text, and links into store lists. Idea-stage build."
   },
-  "zanc-site": {
-    "headline": "Association of Zambians in California",
-    "bullets": [
-      "Community events, membership, and payments for ZANC.",
-      "Maintained as a live community platform — separate from client MVP work."
-    ],
-    "linkLabel": "Visit zancsac.com"
+  "tenat": {
+    "displayName": "Tenat",
+    "blurb": "Property management prototype — started for a client who did not push forward."
+  },
+  "chalospace": {
+    "displayName": "ChaloSpace",
+    "blurb": "Earlier property-management iteration — archived experiment, not maintained."
   }
 }

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-19T16:57:40.604Z",
+  "generated": "2026-05-19T17:05:22.382Z",
   "manifest_path": "C:\\Users\\mabsp\\.openclaw\\workspace\\PORTFOLIO_MANIFEST.json",
   "manifest_source": "env",
   "schema": "id, name, url, blurb, section, status, sort",
@@ -25,11 +25,29 @@
       "sort": 1
     },
     {
+      "id": "zanc-site",
+      "name": "ZANC Site",
+      "url": "https://www.zancsac.com",
+      "blurb": "Content site with payments for Association of Zambians in California.",
+      "section": "community",
+      "status": "live",
+      "sort": 1
+    },
+    {
       "id": "levrage-solutions",
       "name": "LevrAge Solutions",
       "url": "https://www.levragesolutions.com",
       "blurb": "Innovation and economic diplomacy platform.",
       "section": "flagships",
+      "status": "live",
+      "sort": 2
+    },
+    {
+      "id": "link360",
+      "name": "Link360",
+      "url": "https://link360.vercel.app",
+      "blurb": "Community-driven shipping pools from NorCal to Zambia — pledge space, container fill tracking, and transparent pricing.",
+      "section": "community",
       "status": "live",
       "sort": 2
     },
@@ -88,15 +106,6 @@
       "sort": 99
     },
     {
-      "id": "zanc-site",
-      "name": "ZANC Site",
-      "url": "https://www.zancsac.com",
-      "blurb": "Content site with payments for Association of Zambians in California.",
-      "section": "community",
-      "status": "live",
-      "sort": 99
-    },
-    {
       "id": "alpha01",
       "name": "Alpha01 Medical Consultants",
       "url": "https://alpha01.vercel.app",
@@ -119,15 +128,6 @@
       "name": "AfriAI.io",
       "url": "https://www.afriai.io",
       "blurb": "Africa's pre-startup intelligence hub.",
-      "section": "labs",
-      "status": "experiment",
-      "sort": 99
-    },
-    {
-      "id": "link360",
-      "name": "Link360",
-      "url": "https://link360.vercel.app",
-      "blurb": "MVP web app to collect shipping interest and display container completion thermometer.",
       "section": "labs",
       "status": "experiment",
       "sort": 99
@@ -333,15 +333,6 @@
         "sort": 99
       },
       {
-        "id": "link360",
-        "name": "Link360",
-        "url": "https://link360.vercel.app",
-        "blurb": "MVP web app to collect shipping interest and display container completion thermometer.",
-        "section": "labs",
-        "status": "experiment",
-        "sort": 99
-      },
-      {
         "id": "tenat",
         "name": "Tenat — Property Management",
         "url": null,
@@ -377,7 +368,16 @@
         "blurb": "Content site with payments for Association of Zambians in California.",
         "section": "community",
         "status": "live",
-        "sort": 99
+        "sort": 1
+      },
+      {
+        "id": "link360",
+        "name": "Link360",
+        "url": "https://link360.vercel.app",
+        "blurb": "Community-driven shipping pools from NorCal to Zambia — pledge space, container fill tracking, and transparent pricing.",
+        "section": "community",
+        "status": "live",
+        "sort": 2
       }
     ]
   }

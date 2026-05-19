@@ -678,7 +678,9 @@
       "status": "active",
       "studio_public": {
         "export": true,
-        "section": "community"
+        "section": "community",
+        "sort": 1,
+        "note": "Live community platform — built and maintained for ZANC California"
       }
     },
     {
@@ -957,13 +959,20 @@
         "repo": "Mabspro/Link360",
         "url": "https://github.com/Mabspro/Link360"
       },
-      "role": "MVP web app to collect shipping interest and display container completion thermometer.",
-      "last_verified": "2026-05-18T20:05:00Z",
+      "role": "Community-driven shipping pools from NorCal to Zambia — pledge space, container fill tracking, and transparent pricing.",
+      "vercel": {
+        "live": true,
+        "url": "https://link360.vercel.app",
+        "project": "link360"
+      },
+      "last_verified": "2026-05-19T00:00:00Z",
       "has_env_secrets": true,
-      "status": "dormant",
+      "status": "active",
       "studio_public": {
         "export": true,
-        "section": "labs"
+        "section": "community",
+        "sort": 2,
+        "note": "Live shipping MVP for Operation iDream — studio-built, accepting pledges"
       }
     },
     {
