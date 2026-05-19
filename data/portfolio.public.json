@@ -1,7 +1,7 @@
 {
-  "generated": "2026-05-19T16:44:16.963Z",
-  "manifest_path": "D:\\Projects\\levrage-studios\\data\\portfolio.manifest.json",
-  "manifest_source": "bundled",
+  "generated": "2026-05-19T16:51:55.360Z",
+  "manifest_path": "C:\\Users\\mabsp\\.openclaw\\workspace\\PORTFOLIO_MANIFEST.json",
+  "manifest_source": "env",
   "schema": "id, name, url, blurb, section, status, sort",
   "filter_note": "studio_public.export + studio_public.section on each manifest project.",
   "count": 18,
@@ -9,7 +9,7 @@
     {
       "id": "rise-data-pipeline",
       "name": "RISE Data Pipeline",
-      "url": "https://rise-data-dashboard.vercel.app",
+      "url": "https://risegrow.org",
       "blurb": "Zambia-first evidence infrastructure. Development decisions that can be traced, trusted, and improved. Phase 2 in progress.",
       "section": "institutional",
       "status": "live",
@@ -36,7 +36,7 @@
     {
       "id": "signals-zambia-ai",
       "name": "signals.zambia.ai",
-      "url": "https://signals-zambia.vercel.app",
+      "url": "https://zambiamacro.ai",
       "blurb": "Public-data sovereign intelligence: power-stress and macro-regime monitoring for Zambia. Emits CopperCloud ATTESTED receipts daily.",
       "section": "platform",
       "status": "live",
@@ -183,7 +183,7 @@
       {
         "id": "signals-zambia-ai",
         "name": "signals.zambia.ai",
-        "url": "https://signals-zambia.vercel.app",
+        "url": "https://zambiamacro.ai",
         "blurb": "Public-data sovereign intelligence: power-stress and macro-regime monitoring for Zambia. Emits CopperCloud ATTESTED receipts daily.",
         "section": "platform",
         "status": "live",
@@ -194,7 +194,7 @@
       {
         "id": "rise-data-pipeline",
         "name": "RISE Data Pipeline",
-        "url": "https://rise-data-dashboard.vercel.app",
+        "url": "https://risegrow.org",
         "blurb": "Zambia-first evidence infrastructure. Development decisions that can be traced, trusted, and improved. Phase 2 in progress.",
         "section": "institutional",
         "status": "live",

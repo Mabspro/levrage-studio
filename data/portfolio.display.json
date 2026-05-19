@@ -3,12 +3,13 @@
   "rise-data-pipeline": {
     "displayName": "RISE Evidence Engine",
     "headline": "Zambia-first development evidence infrastructure",
+    "url": "https://risegrow.org",
     "bullets": [
       "FastAPI ingest + Vite/React dashboard with district-level artifacts, CDF-aware views, and audit-grade provenance.",
-      "CopperCloud receipt integration for collector runs — fully built, live dashboard on Vercel.",
+      "CopperCloud receipt integration for collector runs — fully built, live at risegrow.org.",
       "Built for institutional partners and field validation workflows, not a client marketing site."
     ],
-    "linkLabel": "Live dashboard at rise-data-dashboard.vercel.app"
+    "linkLabel": "risegrow.org"
   },
   "coppercloud-orchestrator": {
     "headline": "Proof-carrying sovereign compute",
@@ -20,11 +21,22 @@
   },
   "signals-zambia-ai": {
     "headline": "Zambia macro & power-stress intelligence",
+    "url": "https://zambiamacro.ai",
     "bullets": [
       "Public-data ingest: BoZ FX, ZESCO, rainfall, LME copper — daily ATTESTED receipts to CopperCloud.",
       "Staleness gates and regime signals built for sovereign infrastructure, not generic dashboards."
     ],
-    "linkLabel": "signals.zambia.ai"
+    "linkLabel": "zambiamacro.ai"
+  },
+  "levrage-solutions": {
+    "displayName": "LevrAge Strategy & Solutions",
+    "headline": "Architecting Zambia's Dubai Decade",
+    "blurb": "Economic diplomacy and market-entry intelligence for investors, government, and diaspora — ZVSF systems framework, SVS impact scoring, and embassy-ready ZECS pathways, powered by CopperCloud.",
+    "bullets": [
+      "Corridor intelligence, sector playbooks, and roadshow-grade credibility for Zambia market entry.",
+      "Strategy layer that pairs with ZambiaMacro signals and studio build capacity."
+    ],
+    "linkLabel": "levragesolutions.com"
   },
   "network-manager": {
     "logo": "/images/logos/LevrAge.png",

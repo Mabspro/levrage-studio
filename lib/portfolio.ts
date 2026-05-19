@@ -24,6 +24,8 @@ export interface PortfolioDisplayExtra {
   logo?: string
   headline?: string
   displayName?: string
+  blurb?: string
+  url?: string | null
   problem?: string
   solution?: string
   bullets?: string[]

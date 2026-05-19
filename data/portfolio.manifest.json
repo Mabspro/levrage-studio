@@ -384,6 +384,7 @@
       "studio_public": {
         "export": true,
         "section": "platform",
+        "public_url": "https://zambiamacro.ai",
         "note": "Sovereign infrastructure — narrative on studio site, not client work"
       }
     },
@@ -436,7 +437,8 @@
         "export": true,
         "section": "institutional",
         "sort": 1,
-        "note": "Fully built Zambia evidence engine (RISE). Live dashboard on Vercel. Institutional tier on studio site — not client MVP, not sovereign primitives."
+        "public_url": "https://risegrow.org",
+        "note": "Fully built Zambia evidence engine (RISE). Live at risegrow.org. Institutional tier on studio site — not client MVP, not sovereign primitives."
       }
     },
     {

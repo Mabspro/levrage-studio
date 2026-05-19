@@ -131,7 +131,7 @@ function main() {
     items.push({
       id: project.id,
       name: project.name,
-      url: getUrl(project, vercelByManifest),
+      url: sp.public_url || getUrl(project, vercelByManifest),
       blurb: (project.role || project.note || '').split('\n')[0].slice(0, 280),
       section,
       status: resolveStatus(project, vercelByManifest),
