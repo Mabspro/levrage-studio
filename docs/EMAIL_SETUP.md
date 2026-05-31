@@ -25,6 +25,10 @@ The email automation system is fully implemented and ready to use. Here's what y
 - Sends HTML and plain text emails
 - Handles errors gracefully (logs if email fails, still processes submission)
 
+✅ **Internal intake alerts** (ready when you enable env)
+- Second email to `NOTIFY_EMAIL` (e.g. your Gmail) on every submit
+- Full form payload + tagging summary; `Reply-To` set to the submitter
+
 ## Required Credentials
 
 ### 1. Resend API Key
@@ -45,7 +49,21 @@ The email automation system is fully implemented and ready to use. Here's what y
    ```
    Or use Resend's test domain: `onboarding@resend.dev` (for testing only)
 
-### 3. Calendly Link (Optional but Recommended)
+### 3. Gmail / inbox notifications
+
+Add the address where you want alerts (usually your personal Gmail):
+
+```
+NOTIFY_EMAIL=you@gmail.com
+```
+
+Each submission triggers:
+1. Auto-reply to the lead (existing templates)
+2. Internal notification to `NOTIFY_EMAIL` with subject like `[Levrage intake] AI operating system setup — Jane Doe`
+
+If `NOTIFY_EMAIL` is unset, auto-replies still work; you only miss the alert (logged as a warning).
+
+### 4. Calendly Link (Optional but Recommended)
 
 1. Create a Calendly event (20-30 min "Build Fit Call")
 2. Add to `.env.local`:
@@ -62,7 +80,7 @@ The email automation system is fully implemented and ready to use. Here's what y
    - Not-a-fit responses
    - Pricing overview emails
 
-### 4. Site URLs (Optional)
+### 5. Site URLs (Optional)
 
 For pricing overview emails (if you add a pricing request form later):
 ```
@@ -75,8 +93,9 @@ START_BUILD_LINK=https://levrage.studio#start-a-build
 1. **User submits form** → Form data sent to `/api/contact`
 2. **Tagging** → System analyzes submission and assigns tags
 3. **Template selection** → Chooses appropriate email template
-4. **Email sent** → Resend sends personalized response
-5. **Logging** → Submission logged for audit trail
+4. **Auto-reply sent** → Resend sends personalized response to the lead
+5. **Internal alert** → Resend sends full intake summary to `NOTIFY_EMAIL` (if set)
+6. **Logging** → Submission logged for audit trail
 
 ## Email Routing Logic
 
@@ -99,17 +118,20 @@ START_BUILD_LINK=https://levrage.studio#start-a-build
 
 ## Next Steps
 
-1. Get your Resend API key
-2. Set up your from email address
-3. Create your Calendly event
-4. Add all credentials to `.env.local`
-5. Test with a real submission
-6. Monitor logs to refine tagging heuristics if needed
+1. Copy `.env.example` → `.env.local`
+2. Get your Resend API key and verify `FROM_EMAIL`
+3. Set `NOTIFY_EMAIL` to your Gmail
+4. Create your Calendly event (optional)
+5. Add the same vars in Vercel → Environment Variables, redeploy
+6. Test with a real submission — you should get the alert in Gmail and the lead gets the auto-reply
+7. Monitor logs to refine tagging heuristics if needed
 
 ## Files Modified/Created
 
 - `components/StartABuild.tsx` - Added email field
-- `app/api/contact/route.ts` - Main email sending logic
+- `app/api/contact/route.ts` - Auto-reply + internal notification
+- `lib/intake-notification.ts` - Gmail alert body formatting
+- `.env.example` - Credential checklist
 - `lib/tagging.ts` - Tagging heuristics
 - `lib/email-templates.ts` - Email template rendering
 - `package.json` - Added Resend dependency

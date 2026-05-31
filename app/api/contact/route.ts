@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { tagSubmission, getEmailTemplate, shouldIncludeCalendly, type SubmissionData } from '@/lib/tagging'
 import { renderTemplate } from '@/lib/email-templates'
+import { renderIntakeNotification } from '@/lib/intake-notification'
 
 // Initialize Resend lazily to avoid build-time errors when API key is not set
 function getResend() {
@@ -40,6 +41,7 @@ export async function POST(request: Request) {
 
     // Get environment variables
     const fromEmail = process.env.FROM_EMAIL || 'studio@levrage.studio'
+    const notifyEmail = process.env.NOTIFY_EMAIL?.trim()
     const calendlyLink = process.env.CALENDLY_LINK || ''
     const startBuildLink = process.env.START_BUILD_LINK || `${process.env.NEXT_PUBLIC_SITE_URL || 'https://levrage.studio'}#start-a-build`
 
@@ -77,29 +79,57 @@ export async function POST(request: Request) {
           text: emailTemplate.text,
         })
 
-        console.log('Email sent successfully:', {
+        console.log('Auto-reply sent:', {
           to: submissionData.email,
           template: templateName,
           tags,
         })
+
+        if (notifyEmail) {
+          const notification = renderIntakeNotification(body, tags, templateName)
+          try {
+            await resend.emails.send({
+              from: fromEmail,
+              to: notifyEmail,
+              reply_to: submissionData.email,
+              subject: notification.subject,
+              html: notification.html,
+              text: notification.text,
+            })
+            console.log('Intake notification sent:', { to: notifyEmail })
+          } catch (notifyError) {
+            console.error('Failed to send intake notification:', notifyError)
+          }
+        } else {
+          console.warn('NOTIFY_EMAIL not set — no internal intake alert sent')
+        }
       } catch (emailError) {
-        console.error('Failed to send email:', emailError)
+        console.error('Failed to send auto-reply:', emailError)
         // Continue execution even if email fails - log submission
       }
     } else {
-      console.warn('RESEND_API_KEY not set - email not sent')
-      console.log('Would send email:', {
+      console.warn('RESEND_API_KEY not set - emails not sent')
+      console.log('Would send auto-reply:', {
         to: submissionData.email,
         template: templateName,
         tags,
         subject: emailTemplate.subject,
       })
+      if (notifyEmail) {
+        const notification = renderIntakeNotification(body, tags, templateName)
+        console.log('Would send intake notification:', {
+          to: notifyEmail,
+          subject: notification.subject,
+          text: notification.text,
+        })
+      }
     }
 
     // Log submission for audit trail
     console.log('Form submission processed:', {
       email: submissionData.email,
       name: submissionData.name,
+      helpType: body.helpType,
       tags,
       template: templateName,
       timestamp: new Date().toISOString(),

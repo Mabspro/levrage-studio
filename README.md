@@ -34,7 +34,10 @@ The site includes automated email responses based on intake tagging. To enable:
    ```
    RESEND_API_KEY=re_xxxxxxxxxxxxx
    FROM_EMAIL=studio@levrage.studio
+   NOTIFY_EMAIL=you@gmail.com
    ```
+
+   See `.env.example` for the full list.
 
 2. **Set up Calendly** (optional but recommended)
    - Create a Calendly event (20-30 min "Build Fit Call")

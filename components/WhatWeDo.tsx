@@ -6,10 +6,22 @@ export default function WhatWeDo() {
           What LevrAge Innovation Studios does
         </h2>
         <p className="text-lg text-muted mb-12 max-w-3xl">
-          LevrAge Innovation Studios helps non-technical founders go from idea to functioning software by handling the architecture, infrastructure, and first version builds that most "quick fixes" skip.
+          LevrAge Innovation Studios helps non-technical founders operate with AI and go from idea to functioning software — handling the operating layer, architecture, infrastructure, and first version builds that most &quot;quick fixes&quot; skip.
         </p>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="space-y-4">
+            <h3 className="text-xl font-heading font-semibold text-foreground">
+              AI operating system setup
+            </h3>
+            <p className="text-muted">
+              Provider setup, model routing, safe defaults, token discipline, project-memory architecture, and human-in-the-loop guardrails.
+            </p>
+            <p className="text-sm text-muted">
+              You bring the ideas and the work; we bring the operating layer that makes AI useful instead of chaotic.
+            </p>
+          </div>
+
           <div className="space-y-4">
             <h3 className="text-xl font-heading font-semibold text-foreground">
               POC → MVP builds
@@ -18,7 +30,7 @@ export default function WhatWeDo() {
               Rapid builds you can click, test, and show to users or investors.
             </p>
             <p className="text-sm text-muted">
-              Focused scopes that validate the core behavior, not every feature.
+              Focused scopes that validate the core behavior — not every feature.
             </p>
           </div>
           

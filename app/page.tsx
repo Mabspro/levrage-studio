@@ -1,4 +1,5 @@
 import Hero from '@/components/Hero'
+import Services from '@/components/Services'
 import WhatWeDo from '@/components/WhatWeDo'
 import WhyAI from '@/components/WhyAI'
 import SystemsMap from '@/components/SystemsMap'
@@ -17,6 +18,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Hero />
+      <Services />
       <WhatWeDo />
       <WhyAI />
       <SystemsMap />

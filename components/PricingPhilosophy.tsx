@@ -12,6 +12,15 @@ export default function PricingPhilosophy() {
         <div className="space-y-6">
           <div className="border border-border rounded-lg p-6 space-y-2">
             <h3 className="text-lg font-heading font-semibold text-foreground">
+              AI Setup Sprint
+            </h3>
+            <p className="text-muted">
+              Fixed-scope engagement to get you running with an AI operating layer — provider config, model routing, memory structure, safe defaults, and the first runbook. Individual setups can start around $500; fuller engagements run up to $5K, with a couple of weeks of post-setup consult included. Walk away with disciplined defaults, not a black box.
+            </p>
+          </div>
+
+          <div className="border border-border rounded-lg p-6 space-y-2">
+            <h3 className="text-lg font-heading font-semibold text-foreground">
               POC Sprint
             </h3>
             <p className="text-muted">

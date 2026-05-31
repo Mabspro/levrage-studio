@@ -18,6 +18,7 @@ In Vercel project settings → Environment Variables, add:
 ```
 RESEND_API_KEY=re_xxxxxxxxxxxxx
 FROM_EMAIL=studio@levrage.studio
+NOTIFY_EMAIL=you@gmail.com
 ```
 
 #### Recommended:

@@ -16,11 +16,11 @@ export default function Hero() {
         </h1>
         
         <p className="text-xl sm:text-2xl text-muted max-w-2xl mx-auto">
-          The studio that builds the first real version of your product for non-technical founders and operators.
+          AI operating systems and custom builds for non-technical founders who want capability without DIY — or a first real version shipped.
         </p>
         
         <p className="text-lg text-muted max-w-xl mx-auto">
-          Turn your idea into a working POC or MVP with real auth, data, hosting, and a clear path to owning your own stack.
+          Get an AI layer set up with safe defaults, memory, and guardrails — or turn your idea into a working POC or MVP with real auth, data, hosting, and a path to owning your stack.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
@@ -31,6 +31,12 @@ export default function Hero() {
             Start a build
           </Link>
           <Link
+            href="#services"
+            className="px-8 py-3 border border-border text-foreground font-medium rounded-md hover:bg-border/50 transition-colors"
+          >
+            How we help
+          </Link>
+          <Link
             href="#studio-flagships"
             className="px-8 py-3 border border-border text-foreground font-medium rounded-md hover:bg-border/50 transition-colors"
           >
@@ -38,8 +44,8 @@ export default function Hero() {
           </Link>
         </div>
         
-        <p className="text-sm text-muted pt-4">
-          Part incubator, part builder — for founders who want working software, not just generated code or pitch decks.
+        <p className="text-sm text-muted pt-4 max-w-xl mx-auto">
+          For founders who want OpenClaw-like AI setup without wiring it themselves — and for those who need working software, not just generated code or pitch decks.
         </p>
       </div>
     </section>
