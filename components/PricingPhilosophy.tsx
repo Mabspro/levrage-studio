@@ -10,6 +10,19 @@ export default function PricingPhilosophy() {
         </p>
         
         <div className="space-y-6">
+          <div className="border border-primary/30 rounded-lg p-6 space-y-2 bg-primary/5">
+            <div className="flex flex-wrap items-center gap-3">
+              <h3 className="text-lg font-heading font-semibold text-foreground">
+                Signal Scan
+              </h3>
+              <span className="bg-primary text-background text-xs px-2 py-0.5 rounded-full">
+                $250 beta diagnostic
+              </span>
+            </div>
+            <p className="text-muted">
+              A bounded Knowledge Asset Recovery review for one messy text-native notes/docs folder. You get an inventory snapshot, evidence-backed findings, what not to build yet, and a short action map that can qualify a deeper sprint or implementation build.
+            </p>
+          </div>
           <div className="border border-border rounded-lg p-6 space-y-2">
             <h3 className="text-lg font-heading font-semibold text-foreground">
               AI Setup Sprint

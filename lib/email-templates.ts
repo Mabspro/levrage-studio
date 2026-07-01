@@ -20,6 +20,27 @@ export function renderTemplate(
   const startBuildLink = data.start_build_link || '#'
 
   switch (template) {
+    case 'signal_scan_received':
+      return {
+        subject: 'Next steps for your Signal Scan',
+        html: signalScanHTML(firstName),
+        text: signalScanText(firstName),
+      }
+
+    case 'ai_setup_received':
+      return {
+        subject: 'Next steps for your AI setup request',
+        html: aiSetupHTML(firstName, calendlyLink),
+        text: aiSetupText(firstName, calendlyLink),
+      }
+
+    case 'advisory_received':
+      return {
+        subject: 'Next steps for your advisory request',
+        html: advisoryHTML(firstName),
+        text: advisoryText(firstName),
+      }
+
     case 'pricing_overview':
       return {
         subject: 'Pricing Overview — LevrAge Innovation Studios',
@@ -60,6 +81,131 @@ export function renderTemplate(
   }
 }
 
+function signalScanHTML(firstName: string): string {
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+  <p>Hi ${firstName},</p>
+
+  <p>Thanks for reaching out about a Signal Scan.</p>
+
+  <p>The next step is to confirm a bounded, low-sensitivity text-native corpus and the decision you want the report to support. The scan is designed for notes, Markdown, repo docs, exported planning docs, research, or strategy material.</p>
+
+  <p>Before we begin, we will align on:</p>
+  <ul>
+    <li>which folder or source set is in scope</li>
+    <li>which sources should not be touched</li>
+    <li>what decision the action map should help you make</li>
+  </ul>
+
+  <p>Please do not send sensitive client, legal, health, finance, or regulated material until the boundary is agreed.</p>
+
+  <p>Best,<br>
+  Mabs<br>
+  LevrAge Innovation Studios</p>
+</body>
+</html>
+  `.trim()
+}
+
+function signalScanText(firstName: string): string {
+  return `Hi ${firstName},
+
+Thanks for reaching out about a Signal Scan.
+
+The next step is to confirm a bounded, low-sensitivity text-native corpus and the decision you want the report to support. The scan is designed for notes, Markdown, repo docs, exported planning docs, research, or strategy material.
+
+Before we begin, we will align on:
+- which folder or source set is in scope
+- which sources should not be touched
+- what decision the action map should help you make
+
+Please do not send sensitive client, legal, health, finance, or regulated material until the boundary is agreed.
+
+Best,
+Mabs
+LevrAge Innovation Studios`
+}
+
+function aiSetupHTML(firstName: string, calendlyLink: string): string {
+  const bookingLine = calendlyLink && calendlyLink !== '#'
+    ? `<p>You can book time here: <a href="${calendlyLink}" style="color: #00d9ff; text-decoration: none;">Book a call</a></p>`
+    : '<p>I will review what you shared and reply with the cleanest next step.</p>'
+
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+  <p>Hi ${firstName},</p>
+
+  <p>Thanks for sharing what you want your AI setup to help with.</p>
+
+  <p>The first step is to clarify the operating layer: tools in use, model/provider setup, memory structure, safe defaults, and where human review should stay in the loop.</p>
+
+  ${bookingLine}
+
+  <p>Best,<br>
+  Mabs<br>
+  LevrAge Innovation Studios</p>
+</body>
+</html>
+  `.trim()
+}
+
+function aiSetupText(firstName: string, calendlyLink: string): string {
+  const bookingLine = calendlyLink && calendlyLink !== '#'
+    ? `You can book time here: ${calendlyLink}`
+    : 'I will review what you shared and reply with the cleanest next step.'
+
+  return `Hi ${firstName},
+
+Thanks for sharing what you want your AI setup to help with.
+
+The first step is to clarify the operating layer: tools in use, model/provider setup, memory structure, safe defaults, and where human review should stay in the loop.
+
+${bookingLine}
+
+Best,
+Mabs
+LevrAge Innovation Studios`
+}
+
+function advisoryHTML(firstName: string): string {
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+  <p>Hi ${firstName},</p>
+
+  <p>Thanks for reaching out. I will review the advisory context you shared and come back with the clearest next step: a short diagnostic, a scoped build conversation, or a direct pass if it is not a fit.</p>
+
+  <p>Best,<br>
+  Mabs<br>
+  LevrAge Innovation Studios</p>
+</body>
+</html>
+  `.trim()
+}
+
+function advisoryText(firstName: string): string {
+  return `Hi ${firstName},
+
+Thanks for reaching out. I will review the advisory context you shared and come back with the clearest next step: a short diagnostic, a scoped build conversation, or a direct pass if it is not a fit.
+
+Best,
+Mabs
+LevrAge Innovation Studios`
+}
 function pricingOverviewHTML(firstName: string, startBuildLink: string): string {
   return `
 <!DOCTYPE html>

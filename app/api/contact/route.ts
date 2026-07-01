@@ -24,6 +24,7 @@ export async function POST(request: Request) {
 
     // Tag submission
     const submissionData: SubmissionData = {
+      helpType: body.helpType || '',
       name: body.name || '',
       email: body.email || '',
       building: body.building || '',
@@ -31,6 +32,14 @@ export async function POST(request: Request) {
       timeline: body.timeline || '',
       budget: body.budget || '',
       sensitive: body.sensitive || '',
+      scanFolder: body.scanFolder || '',
+      scanDecision: body.scanDecision || '',
+      scanAvoid: body.scanAvoid || '',
+      aiTools: body.aiTools || '',
+      aiMainGoal: body.aiMainGoal || '',
+      aiDecisionMaker: body.aiDecisionMaker || '',
+      curiousAbout: body.curiousAbout || '',
+      advisoryNeed: body.advisoryNeed || '',
     }
 
     const tags = tagSubmission(submissionData)

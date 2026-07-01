@@ -16,11 +16,11 @@ export default function Hero() {
         </h1>
         
         <p className="text-xl sm:text-2xl text-muted max-w-2xl mx-auto">
-          AI operating systems and custom builds for non-technical founders who want capability without DIY — or a first real version shipped.
+          Knowledge scans, AI operating systems, and custom builds for founders who need buried thinking turned into capability — or a first real version shipped.
         </p>
         
         <p className="text-lg text-muted max-w-xl mx-auto">
-          Get an AI layer set up with safe defaults, memory, and guardrails — or turn your idea into a working POC or MVP with real auth, data, hosting, and a path to owning your stack.
+          Start with a Signal Scan when the value is buried in notes and docs, set up an AI layer with safe defaults when the workflow is clear, or turn the approved idea into a working POC or MVP.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">

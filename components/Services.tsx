@@ -6,10 +6,48 @@ export default function Services() {
           How we help
         </h2>
         <p className="text-lg text-muted mb-12 max-w-3xl">
-          Two paths. One door.
+          Three entry points. One door.
         </p>
 
         <div className="space-y-8">
+          <div className="border border-primary/30 rounded-lg p-6 sm:p-8 space-y-6 bg-primary/5">
+            <div className="flex flex-wrap items-center gap-3">
+              <h3 className="text-xl font-heading font-semibold text-foreground">
+                Knowledge Asset Recovery Signal Scan
+              </h3>
+              <span className="bg-primary text-background text-xs px-2 py-0.5 rounded-full">
+                New diagnostic lane
+              </span>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="space-y-3">
+                <h4 className="text-sm font-medium text-foreground">What&apos;s included</h4>
+                <ul className="text-sm text-muted space-y-2 list-disc list-inside">
+                  <li>Inventory of one bounded text-native notes/docs folder without changing your files</li>
+                  <li>Short evidence-backed findings tied to approved source documents</li>
+                  <li>Now / next / later action map that separates useful signals from stale material</li>
+                  <li>Clear recommendation on whether an implementation sprint is worth pursuing</li>
+                </ul>
+              </div>
+              <div className="space-y-3">
+                <h4 className="text-sm font-medium text-foreground">What&apos;s not included</h4>
+                <ul className="text-sm text-muted space-y-2 list-disc list-inside">
+                  <li>Generic Drive cleanup, enterprise search, or a document chatbot</li>
+                  <li>First-pass DOCX/PDF extraction, OCR, embeddings, or cloud ingestion</li>
+                  <li>Legal, health, finance, or compliance review</li>
+                </ul>
+              </div>
+            </div>
+
+            <p className="text-sm text-foreground">
+              <span className="font-medium">Beta price:</span>{' '}
+              <span className="text-muted">
+                $250 - paid diagnostic for messy text-native notes, repo docs, research, or planning folders
+              </span>
+            </p>
+          </div>
+
           <div className="border border-border rounded-lg p-6 sm:p-8 space-y-6">
             <div className="flex flex-wrap items-center gap-3">
               <h3 className="text-xl font-heading font-semibold text-foreground">

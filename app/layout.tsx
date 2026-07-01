@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'LevrAge Innovation Studios',
-  description: 'The studio that builds the first real version of your product for non-technical founders and operators.',
+  description: 'Knowledge scans, AI operating systems, and first-version builds for founders and operators who need practical systems, not generic AI noise.',
 }
 
 export default function RootLayout({

@@ -2,9 +2,14 @@
 
 import { useState, FormEvent } from 'react'
 
-type HelpType = '' | 'ai-setup' | 'custom-build' | 'advisory' | 'not-sure'
+type HelpType = '' | 'signal-scan' | 'ai-setup' | 'custom-build' | 'advisory' | 'not-sure'
 
 const HELP_OPTIONS: { value: HelpType; label: string }[] = [
+  {
+    value: 'signal-scan',
+    label:
+      'Signal Scan - I have messy notes/docs and need an action map before I build',
+  },
   {
     value: 'ai-setup',
     label:
@@ -25,6 +30,9 @@ const emptyForm = {
   timeline: '',
   budget: '',
   sensitive: '',
+  scanFolder: '',
+  scanDecision: '',
+  scanAvoid: '',
   aiTools: '',
   aiMainGoal: '',
   aiDecisionMaker: '',
@@ -72,7 +80,7 @@ export default function StartABuild() {
           Start a build
         </h2>
         <p className="text-lg text-muted mb-4">
-          This is for founders who are ready to move from documents and decks to something users can actually touch — or to get an AI operating layer set up without wiring it alone.
+          This is for founders who are ready to move from scattered knowledge, documents, and decks to a clear next action — whether that means a Signal Scan, an AI operating layer, or something users can actually touch.
         </p>
         <p className="text-sm text-muted mb-4">
           Share enough detail to understand what you need, who it&apos;s for, your timeline, and what success looks like. If it&apos;s not a fit, you&apos;ll hear that quickly.
@@ -144,6 +152,53 @@ export default function StartABuild() {
             </>
           )}
 
+          {helpType === 'signal-scan' && (
+            <>
+              <div>
+                <label htmlFor="scanFolder" className="block text-sm font-medium text-foreground mb-2">
+                  What messy notes/docs folder should we review?
+                </label>
+                <textarea
+                  id="scanFolder"
+                  required
+                  rows={3}
+                  value={formData.scanFolder}
+                  onChange={(e) => setFormData({ ...formData, scanFolder: e.target.value })}
+                  className={inputClass}
+                  placeholder="Markdown notes, repo docs, exported planning docs, research folder, etc. Do not paste sensitive content here."
+                />
+              </div>
+
+              <div>
+                <label htmlFor="scanDecision" className="block text-sm font-medium text-foreground mb-2">
+                  What decision are you trying to make from it?
+                </label>
+                <textarea
+                  id="scanDecision"
+                  required
+                  rows={3}
+                  value={formData.scanDecision}
+                  onChange={(e) => setFormData({ ...formData, scanDecision: e.target.value })}
+                  className={inputClass}
+                  placeholder="What to build, what to package, what to park, what to organize, etc."
+                />
+              </div>
+
+              <div>
+                <label htmlFor="scanAvoid" className="block text-sm font-medium text-foreground mb-2">
+                  What should we avoid touching? <span className="text-muted">(optional)</span>
+                </label>
+                <textarea
+                  id="scanAvoid"
+                  rows={2}
+                  value={formData.scanAvoid}
+                  onChange={(e) => setFormData({ ...formData, scanAvoid: e.target.value })}
+                  className={inputClass}
+                  placeholder="Sensitive folders, client data, legal/health/finance material, private exports..."
+                />
+              </div>
+            </>
+          )}
           {helpType === 'ai-setup' && (
             <>
               <div>

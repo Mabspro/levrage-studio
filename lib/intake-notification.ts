@@ -10,6 +10,9 @@ const FIELD_LABELS: Record<string, string> = {
   timeline: 'Timeline (60–90 days)',
   budget: 'Budget',
   sensitive: 'Regulated / sensitive',
+  scanFolder: 'Signal Scan corpus',
+  scanDecision: 'Decision to make',
+  scanAvoid: 'Avoid touching',
   aiTools: 'AI tools in use',
   aiMainGoal: 'Main AI goal',
   aiDecisionMaker: 'Decision maker on scope/budget',
@@ -19,6 +22,7 @@ const FIELD_LABELS: Record<string, string> = {
 
 function formatHelpType(value: string): string {
   const labels: Record<string, string> = {
+    'signal-scan': 'Knowledge Asset Recovery Signal Scan',
     'ai-setup': 'AI operating system setup',
     'custom-build': 'Custom build (POC / MVP)',
     advisory: 'Advisory',
