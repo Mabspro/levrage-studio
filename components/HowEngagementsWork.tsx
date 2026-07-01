@@ -85,7 +85,7 @@ export default function HowEngagementsWork() {
               <div
                 key={step.id}
                 data-step={step.id}
-                className="relative pl-20"
+                className="relative pl-14 sm:pl-20"
               >
                 {/* Step marker */}
                 <div

@@ -23,23 +23,14 @@ export default function Hero() {
           Start with a Signal Scan when the value is buried in notes and docs, set up an AI layer with safe defaults when the workflow is clear, or turn the approved idea into a working POC or MVP.
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-          <Link
-            href="#start-a-build"
-            className="px-8 py-3 bg-primary text-background font-medium rounded-md hover:bg-primary/90 transition-colors"
-          >
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center pt-4 max-w-xs sm:max-w-none mx-auto">
+          <Link href="#start-a-build" className="btn-primary px-8 py-3">
             Start a build
           </Link>
-          <Link
-            href="#services"
-            className="px-8 py-3 border border-border text-foreground font-medium rounded-md hover:bg-border/50 transition-colors"
-          >
+          <Link href="#services" className="btn-secondary px-8 py-3">
             How we help
           </Link>
-          <Link
-            href="#studio-flagships"
-            className="px-8 py-3 border border-border text-foreground font-medium rounded-md hover:bg-border/50 transition-colors"
-          >
+          <Link href="#studio-flagships" className="btn-secondary px-8 py-3">
             See live builds
           </Link>
         </div>

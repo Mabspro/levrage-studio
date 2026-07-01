@@ -6,18 +6,21 @@ export default function Services() {
           How we help
         </h2>
         <p className="text-lg text-muted mb-12 max-w-3xl">
-          Three entry points. One door.
+          Four entry points. One door.
         </p>
 
         <div className="space-y-8">
           <div className="border border-primary/30 rounded-lg p-6 sm:p-8 space-y-6 bg-primary/5">
-            <div className="flex flex-wrap items-center gap-3">
-              <h3 className="text-xl font-heading font-semibold text-foreground">
-                Knowledge Asset Recovery Signal Scan
-              </h3>
-              <span className="bg-primary text-background text-xs px-2 py-0.5 rounded-full">
-                New diagnostic lane
-              </span>
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div className="flex flex-wrap items-center gap-3">
+                <h3 className="text-xl font-heading font-semibold text-foreground">
+                  Knowledge Asset Recovery Signal Scan
+                </h3>
+                <span className="bg-primary text-background text-xs px-2 py-0.5 rounded-full">
+                  New diagnostic lane
+                </span>
+              </div>
+              <span className="shrink-0 text-xl font-heading font-bold text-primary">$250</span>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
@@ -40,21 +43,24 @@ export default function Services() {
               </div>
             </div>
 
-            <p className="text-sm text-foreground">
-              <span className="font-medium">Beta price:</span>{' '}
-              <span className="text-muted">
-                $250 - paid diagnostic for messy text-native notes, repo docs, research, or planning folders
-              </span>
+            <p className="text-sm text-muted">
+              <span className="font-medium text-foreground">Beta price</span> — paid diagnostic
+              for messy text-native notes, repo docs, research, or planning folders
             </p>
           </div>
 
           <div className="border border-border rounded-lg p-6 sm:p-8 space-y-6">
-            <div className="flex flex-wrap items-center gap-3">
-              <h3 className="text-xl font-heading font-semibold text-foreground">
-                AI Operating System Setup
-              </h3>
-              <span className="bg-primary text-background text-xs px-2 py-0.5 rounded-full">
-                Most popular for founders starting out
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div className="flex flex-wrap items-center gap-3">
+                <h3 className="text-xl font-heading font-semibold text-foreground">
+                  AI Operating System Setup
+                </h3>
+                <span className="bg-primary text-background text-xs px-2 py-0.5 rounded-full">
+                  Most popular for founders starting out
+                </span>
+              </div>
+              <span className="shrink-0 text-xl font-heading font-bold text-primary whitespace-nowrap">
+                $500–$5K
               </span>
             </div>
 
@@ -81,21 +87,24 @@ export default function Services() {
               </div>
             </div>
 
-            <p className="text-sm text-foreground">
-              <span className="font-medium">Starting from:</span>{' '}
-              <span className="text-muted">
-                $500–$5K — individual setups from ~$500; fuller sprints up to $5K (fixed-scope diagnostic + setup)
-              </span>
+            <p className="text-sm text-muted">
+              <span className="font-medium text-foreground">Starting from</span> — individual
+              setups from ~$500; fuller sprints up to $5K (fixed-scope diagnostic + setup)
             </p>
           </div>
 
           <div className="border border-border rounded-lg p-6 sm:p-8 space-y-6">
-            <div className="flex flex-wrap items-center gap-3">
-              <h3 className="text-xl font-heading font-semibold text-foreground">
-                Custom Build — POC to MVP
-              </h3>
-              <span className="border border-border text-muted text-xs px-2 py-0.5 rounded-full">
-                For founders who need working software
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div className="flex flex-wrap items-center gap-3">
+                <h3 className="text-xl font-heading font-semibold text-foreground">
+                  Custom Build — POC to MVP
+                </h3>
+                <span className="border border-border text-muted text-xs px-2 py-0.5 rounded-full">
+                  For founders who need working software
+                </span>
+              </div>
+              <span className="shrink-0 text-xl font-heading font-bold text-primary whitespace-nowrap">
+                $2K–$5K
               </span>
             </div>
 
@@ -120,9 +129,9 @@ export default function Services() {
               </div>
             </div>
 
-            <p className="text-sm text-foreground">
-              <span className="font-medium">Starting from:</span>{' '}
-              <span className="text-muted">$2K–$5K (fixed-scope MVP sprint)</span>
+            <p className="text-sm text-muted">
+              <span className="font-medium text-foreground">Starting from</span> — fixed-scope
+              MVP sprint
             </p>
           </div>
 

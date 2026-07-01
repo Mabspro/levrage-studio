@@ -20,7 +20,7 @@ export default function InstitutionalProducts() {
           {items.map((item) => (
             <div
               key={item.id}
-              className="border border-border rounded-lg p-8 space-y-4 md:flex md:gap-8 md:items-start"
+              className="border border-border rounded-lg p-6 sm:p-8 space-y-4 md:flex md:gap-8 md:items-start"
             >
               <div className="flex-1 space-y-4">
                 <p className="text-xs uppercase tracking-widest text-muted font-medium">
@@ -44,7 +44,7 @@ export default function InstitutionalProducts() {
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block px-6 py-3 bg-primary text-background font-medium rounded-md hover:bg-primary/90 transition-colors text-sm"
+                    className="btn-primary px-6 py-3 text-sm"
                   >
                     {item.linkLabel || 'View live dashboard'} →
                   </Link>

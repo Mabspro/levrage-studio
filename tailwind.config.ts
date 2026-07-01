@@ -15,6 +15,10 @@ const config: Config = {
         secondary: '#ffa500',
         muted: '#6b7280',
         border: '#1f2937',
+        // Semantic states — dimmed for dark-mode legibility rather than saturated light-mode reds/greens
+        success: '#4ade80',
+        danger: '#f87171',
+        warning: '#fbbf24',
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],

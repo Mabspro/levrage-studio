@@ -19,6 +19,35 @@
     @apply bg-background text-foreground;
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
+  /* Tighter tracking + line-height on large headings reads more intentional and less "default browser" */
+  h1,
+  h2 {
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  /* Consistent, visible keyboard focus ring across every link/button site-wide */
+  a:focus-visible,
+  button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(10, 14, 26, 1), 0 0 0 4px rgba(0, 217, 255, 0.6);
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  /* Shared interactive states (default / hover / active / focus / disabled) for every CTA */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md font-medium
+      transition-all duration-150 ease-out
+      active:scale-[0.97]
+      disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+  .btn-primary {
+    @apply btn bg-primary text-background hover:bg-primary/90 active:bg-primary;
+  }
+  .btn-secondary {
+    @apply btn border border-border text-foreground hover:border-primary/40 hover:bg-border/50;
+  }
 }
 
 @layer utilities {

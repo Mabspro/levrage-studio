@@ -63,12 +63,16 @@ export default function SystemsMap() {
                 <button
                   key={node.id}
                   type="button"
+                  aria-expanded={isHovered}
                   onMouseEnter={() => setHoveredNode(node.id)}
                   onMouseLeave={() => setHoveredNode(null)}
+                  onFocus={() => setHoveredNode(node.id)}
+                  onBlur={() => setHoveredNode(null)}
+                  onClick={() => setHoveredNode(node.id)}
                   className="relative group text-left"
                 >
                   <div
-                    className={`p-4 rounded-lg border min-h-[100px] transition-[border-color,background-color,box-shadow] duration-300 ease-out will-change-[border-color,background-color,box-shadow] ${
+                    className={`p-4 rounded-lg border min-h-[100px] transition-[border-color,background-color,box-shadow] duration-300 ease-out will-change-[border-color,background-color,box-shadow] active:scale-[0.98] ${
                       isHovered
                         ? 'border-primary bg-primary/5 shadow-lg shadow-primary/10'
                         : 'border-border hover:border-primary/50'
@@ -127,7 +131,7 @@ export default function SystemsMap() {
         </div>
 
         <p className="text-sm text-muted text-center mt-8 max-w-2xl mx-auto">
-          Hover over each component to see why these decisions matter at MVP stage.
+          Tap or hover over each component to see why these decisions matter at MVP stage.
         </p>
       </div>
     </section>

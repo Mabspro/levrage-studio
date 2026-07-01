@@ -95,26 +95,33 @@ export default function StartABuild() {
             <legend className="block text-sm font-medium text-foreground mb-3">
               What kind of help do you need? <span className="text-muted">(required)</span>
             </legend>
-            <div className="space-y-3">
-              {HELP_OPTIONS.map((option) => (
-                <label
-                  key={option.value}
-                  className="flex items-start gap-3 cursor-pointer text-sm text-muted"
-                >
-                  <input
-                    type="radio"
-                    name="helpType"
-                    required
-                    value={option.value}
-                    checked={formData.helpType === option.value}
-                    onChange={() =>
-                      setFormData({ ...formData, helpType: option.value })
-                    }
-                    className="mt-1"
-                  />
-                  <span>{option.label}</span>
-                </label>
-              ))}
+            <div className="space-y-2">
+              {HELP_OPTIONS.map((option) => {
+                const isSelected = formData.helpType === option.value
+                return (
+                  <label
+                    key={option.value}
+                    className={`flex items-start gap-3 cursor-pointer text-sm rounded-md px-3 py-2.5 -mx-3 transition-colors focus-within:ring-2 focus-within:ring-primary/50 ${
+                      isSelected
+                        ? 'bg-primary/10 text-foreground'
+                        : 'text-muted hover:bg-border/40 hover:text-foreground'
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="helpType"
+                      required
+                      value={option.value}
+                      checked={isSelected}
+                      onChange={() =>
+                        setFormData({ ...formData, helpType: option.value })
+                      }
+                      className="mt-1 accent-primary"
+                    />
+                    <span>{option.label}</span>
+                  </label>
+                )
+              })}
             </div>
           </fieldset>
 
@@ -368,22 +375,64 @@ export default function StartABuild() {
             <button
               type="submit"
               disabled={status === 'submitting'}
-              className="w-full px-8 py-3 bg-primary text-background font-medium rounded-md hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="btn-primary w-full px-8 py-3"
             >
+              {status === 'submitting' && (
+                <svg
+                  className="h-4 w-4 animate-spin text-background"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                  />
+                </svg>
+              )}
               {status === 'submitting' ? 'Submitting...' : 'Submit'}
             </button>
           )}
 
           {status === 'success' && (
-            <p className="text-sm text-primary">
-              Thanks! We&apos;ll review your submission and get back to you soon.
-            </p>
+            <div
+              role="status"
+              className="flex items-start gap-3 rounded-md border border-success/30 bg-success/10 p-4 text-sm text-success"
+            >
+              <svg className="mt-0.5 h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <p>Thanks! We&apos;ll review your submission and get back to you soon.</p>
+            </div>
           )}
 
           {status === 'error' && (
-            <p className="text-sm text-secondary">
-              Something went wrong. Please try again or contact us directly.
-            </p>
+            <div
+              role="alert"
+              className="flex items-start gap-3 rounded-md border border-danger/30 bg-danger/10 p-4 text-sm text-danger"
+            >
+              <svg className="mt-0.5 h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path
+                  fillRule="evenodd"
+                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 10-2 0v4a1 1 0 102 0V6zm-1 8a1 1 0 100-2 1 1 0 000 2z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <p>Something went wrong. Please try again or contact us directly.</p>
+            </div>
           )}
         </form>
       </div>
