@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="relative min-h-screen flex items-start lg:items-center justify-center px-4 sm:px-6 lg:px-8 pt-28 pb-20 lg:py-0 overflow-hidden">
       {/* Subtle logo watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-96 h-96 opacity-[0.02] blur-3xl">
